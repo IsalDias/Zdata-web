@@ -4,14 +4,14 @@ import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
 
 const PARTNERS = [
-  { src: "/images/companies/company1.png", alt: "People’s Leasing" },
-  { src: "/images/companies/company2.png", alt: "Mahindra Ideal Finance" },
-  { src: "/images/companies/company3.png", alt: "Seylan Bank" },
-  { src: "/images/companies/company4.png", alt: "LCB Finance" },
-  { src: "/images/companies/company5.png", alt: "Kingslake" },
-  { src: "/images/companies/company6.png", alt: "OpenArc" },
-  { src: "/images/companies/company7.png", alt: "Muntra" },
-  { src: "/images/companies/company8.png", alt: "PMF Finance" },
+  { src: "images/companies/company1.png", alt: "People’s Leasing" },
+  { src: "images/companies/company2.png", alt: "Mahindra Ideal Finance" },
+  { src: "images/companies/company3.png", alt: "Seylan Bank" },
+  { src: "images/companies/company4.png", alt: "LCB Finance" },
+  { src: "images/companies/company5.png", alt: "Kingslake" },
+  { src: "images/companies/company6.png", alt: "OpenArc" },
+  { src: "images/companies/company7.png", alt: "Muntra" },
+  { src: "images/companies/company8.png", alt: "PMF Finance" },
 ];
 
 export default function Grid1() {
