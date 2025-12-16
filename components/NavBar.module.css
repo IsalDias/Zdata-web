@@ -1,0 +1,9 @@
+.navBg {
+  /* background-image: url('/images/navbar-bg.svg'); */
+  background-size: cover;
+  background-position: center;
+}
+
+.navOverlay {
+  background: rgba(0, 0, 0, 0.35);
+}
