@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import latest1 from "../public/images/latest1.png";
+import latest3 from "../public/images/latest3.png";
 import team from "../public/images/latest2.png";
 
 
@@ -17,7 +18,7 @@ const DEFAULT_ITEMS = [
     id: "2",
     title: "Credit Scoring Insights",
     description: "Short description about the feature / update goes here.",
-    image:latest1,
+    image:latest3,
   },
   {
     id: "3",
@@ -91,7 +92,7 @@ export default function LatestFromFinverus({
   const data = items?.length ? items : DEFAULT_ITEMS;
 
   return (
-    <section className="bg-white py-12 md:py-16">
+    <section className="bg-white py-12 md:py-12">
       <div className="mx-auto max-w-7xl px-4">
         {/* Heading */}
         <h2 className="text-center text-lg md:text-xl text-slate-700">

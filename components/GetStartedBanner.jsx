@@ -13,11 +13,10 @@ export default function GetStartedBanner({ integrations = DEFAULT_INTEGRATIONS }
   const [email, setEmail] = useState("");
 
   return (
-    <section className="bg-white py-10 md:py-14">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="relative overflow-hidden rounded-[2rem] px-6 py-10 md:px-10 md:py-14">
-          {/* Animated gradient background */}
-          <div className="absolute inset-0 animated-gradient" />
+<section className="bg-white py-10 md:py-10 relative overflow-hidden">
+  <div className="mx-auto max-w-[90rem] px-4">
+    <div className="relative overflow-hidden rounded-[2rem] px-6 py-10 md:px-14 lg:px-20 md:py-14">
+      <div className="absolute inset-0 animated-gradient" />
 
           {/* soft overlay for readability */}
           <div className="absolute inset-0 bg-[#061427]/15" />
@@ -94,7 +93,7 @@ export default function GetStartedBanner({ integrations = DEFAULT_INTEGRATIONS }
         .animated-gradient {
           background: linear-gradient(105deg, #05213c 0%, #3a6ca6 45%, #0066cc 100%);
           background-size: 200% 200%;
-          animation: gradientMove 5s ease-in-out infinite;
+          animation: gradientMove 7s ease-in-out infinite;
         }
 
         @keyframes gradientMove {

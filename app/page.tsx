@@ -10,6 +10,8 @@ import DividerIcon from "../components/DividerIcon";
 import LatestFromFinverus from "../components/LatestFromFinverus";
 import GetStartedBanner from "../components/GetStartedBanner";
 import ReadyToGetStarted from "../components/ReadyToGetStarted";
+import PeopleBehindBuild from "../components/PeopleBehindBuild";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   return (
@@ -25,7 +27,10 @@ export default function Home() {
       <DividerIcon />
       <LatestFromFinverus />
       <GetStartedBanner />
+      <PeopleBehindBuild />
+      <Testimonials />
       <ReadyToGetStarted />
+
     </>
   );
 }

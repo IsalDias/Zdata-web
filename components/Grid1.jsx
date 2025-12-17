@@ -6,17 +6,28 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import company1 from "../public/images/company1.png";
+import company2 from "../public/images/company2.png";
+import company3 from "../public/images/company3.png";
+import company4 from "../public/images/company4.png";
+import company5 from "../public/images/company5.png";
+import company6 from "../public/images/company6.png";
+import company7 from "../public/images/company7.png";
+import company8 from "../public/images/company8.png";
+
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 const PARTNERS = [
-  { src: "/images/companies/company1.png", alt: "People’s Leasing" },
-  { src: "/images/companies/company2.png", alt: "Mahindra Ideal Finance" },
-  { src: "/images/companies/company3.png", alt: "Seylan Bank" },
-  { src: "/images/companies/company4.png", alt: "LCB Finance" },
-  { src: "/images/companies/company5.png", alt: "Kingslake" },
-  { src: "/images/companies/company6.png", alt: "OpenArc" },
-  { src: "/images/companies/company7.png", alt: "Muntra" },
-  { src: "/images/companies/company8.png", alt: "PMF Finance" },
+  { src: company1, alt: "HDFC Bank" },
+  { src: company2, alt: "Mahindra Ideal Finance" },
+  { src: company3, alt: "Seylan Bank" },
+  { src: company4, alt: "LCB Finance" },
+  { src: company5, alt: "Kingslake" },
+  { src: company6, alt: "OpenArc" },
+  { src: company7, alt: "Muntra" },
+  { src: company8, alt: "Muntra" },
 ];
 
 export default function Grid1() {
@@ -55,7 +66,7 @@ export default function Grid1() {
   }, []);
 
   return (
-    <section className="relative bg-white py-24 md:py-2 lg:py-7">
+    <section className="relative bg-white py-24 md:py-8 lg:py-20">
       {/* background grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
@@ -101,13 +112,8 @@ export default function Grid1() {
                     md:[&:nth-last-child(-n+4)]:border-b-0
                   "
                 >
-                  <Image
-                    src={p.src}
-                    alt={p.alt}
-                    width={220}
-                    height={120}
-                    className="max-h-24 md:max-h-28 w-auto object-contain"
-                  />
+                  <Image src={p.src} alt={p.alt} width={200} height={120} />
+
                 </div>
               ))}
             </div>

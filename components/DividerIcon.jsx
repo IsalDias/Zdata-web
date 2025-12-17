@@ -49,7 +49,7 @@ export default function DividerIcon() {
     }, []);
 
     return (
-        <section ref={wrapRef} className="bg-white py-10 md:py-14">
+        <section ref={wrapRef} className="bg-white py-10 md:py-1">
             <div className="mx-auto max-w-5.5xl px-4">
                 <div className="flex items-center justify-center gap-4">
                     {/* left line */}

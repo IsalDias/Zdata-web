@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import company1 from "../public/images/company1.png";
+import company2 from "../public/images/company2.png";
 
 export default function TrustedCompanies({ items = [] }) {
   const data = useMemo(
@@ -11,14 +13,14 @@ export default function TrustedCompanies({ items = [] }) {
         : [
             {
               name: "SEYLAN",
-              logo: "/images/companies/company3.png",
+              logo: company1,
               title: "TRUSTED BY LEADING COMPANIES",
               p1: "Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value.",
               p2: "At ZData Innovations, we are committed to excellence, innovation, and collaboration. Our team of seasoned professionals blends technical expertise with creativity to build robust, future-ready solutions. As technology reshapes industries, we stay ahead of the curve, empowering businesses with cutting-edge tools to thrive in the digital era.",
             },
             {
               name: "SEYLAN",
-              logo: "/images/companies/company4.png",
+              logo: company2,
               title: "Tasd LEADING COMPANIES",
               p1: "Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value.",
               p2: "At ZData Innovations, we are committed to excellence, innovation, and collaboration. Our team of seasoned professionals blends technical expertise with creativity to build robust, future-ready solutions. As technology reshapes industries, we stay ahead of the curve, empowering businesses with cutting-edge tools to thrive in the digital era.",
@@ -40,7 +42,7 @@ export default function TrustedCompanies({ items = [] }) {
           <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-center">
             {/* LEFT: Logo */}
             <div className="md:col-span-5 flex items-center justify-center">
-              <div className="relative h-28 w-[320px] md:h-22 md:w-[380px]">
+              <div className="relative h-28 w-[320px] md:h-22 md:w-[500px]">
                 <Image
                   src={current.logo}
                   alt={`${current.name} logo`}
