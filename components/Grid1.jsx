@@ -55,7 +55,7 @@ export default function Grid1() {
   }, []);
 
   return (
-    <section className="relative bg-white py-24 md:py-32 lg:py-30">
+    <section className="relative bg-white py-24 md:py-2 lg:py-7">
       {/* background grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.05]"

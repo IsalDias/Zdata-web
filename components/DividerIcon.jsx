@@ -31,13 +31,13 @@ export default function DividerIcon() {
             tl.to(".div-icon", {
                 y: 0,
                 opacity: 1,
-                duration: 0.9,
+                duration: 0.45,
                 ease: "power2.out",
             }).to(
                 [".div-line-l", ".div-line-r"],
                 {
                     scaleX: 1,
-                    duration: 0.9,
+                    duration: 0.45,
                     ease: "power3.out",
                     stagger: 0.05,
                 },
@@ -50,13 +50,13 @@ export default function DividerIcon() {
 
     return (
         <section ref={wrapRef} className="bg-white py-10 md:py-14">
-            <div className="mx-auto max-w-6xl px-4">
+            <div className="mx-auto max-w-5.5xl px-4">
                 <div className="flex items-center justify-center gap-4">
                     {/* left line */}
-                    <div className="div-line-l h-px w-full max-w-[520px] bg-slate-300" />
+                    <div className="div-line-l h-px w-full max-w-[520px] bg-slate-900 bg-blue-900" />
 
                     {/* icon */}
-                    <div className="div-icon relative h-12 w-12 rounded-md  shadow-sm flex items-center justify-center">
+                    <div className="div-icon relative h-24 w-24 rounded-md flex items-center justify-center">
                         <Image
                             src={finverusIcon}
                             alt="Icon"
@@ -67,7 +67,8 @@ export default function DividerIcon() {
                     </div>
 
                     {/* right line */}
-                    <div className="div-line-r h-px w-full max-w-[520px] bg-slate-300" />
+                    <div className="div-line-r h-px w-full max-w-[520px] bg-slate-900 bg-blue-900" />
+
                 </div>
             </div>
         </section>

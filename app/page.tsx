@@ -7,6 +7,9 @@ import DigitalInnovationCTA from "../components/DigitalInnovationCTA";
 import WhatWeDo from "../components/WhatWeDo";
 import FinverusIntro from "../components/FinverusIntro";
 import DividerIcon from "../components/DividerIcon";
+import LatestFromFinverus from "../components/LatestFromFinverus";
+import GetStartedBanner from "../components/GetStartedBanner";
+import ReadyToGetStarted from "../components/ReadyToGetStarted";
 
 export default function Home() {
   return (
@@ -20,6 +23,9 @@ export default function Home() {
       <WhatWeDo />
       <FinverusIntro />
       <DividerIcon />
+      <LatestFromFinverus />
+      <GetStartedBanner />
+      <ReadyToGetStarted />
     </>
   );
 }

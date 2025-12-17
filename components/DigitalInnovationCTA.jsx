@@ -26,30 +26,30 @@ export default function DigitalInnovationCTA() {
       tl.fromTo(
         ".cta-top",
         { opacity: 0 },
-        { opacity: 1, duration: 0.35, ease: "power2.out" }
+        { opacity: 1, duration: 0.45, ease: "power4.out" }
       )
         .fromTo(
           ".cta-pill",
           { opacity: 0, scale: 0.8, y: 8 },
-          { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "power2.out" },
+          { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "power4.out" },
           "-=0.15"
         )
         .fromTo(
           ".cta-title",
           { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" },
           "-=0.25"
         )
         .fromTo(
           ".cta-subtitle",
           { opacity: 0, y: 18 },
-          { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" },
           "-=0.25"
         )
         .fromTo(
           ".cta-btn",
           { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" },
           "-=0.2"
         );
     }, sectionRef);
