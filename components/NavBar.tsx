@@ -17,68 +17,89 @@ export default function NavBar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 bg-transparent border-b border-gray-200" role="banner">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+    <header
+      className="absolute top-6 left-0 right-0 z-50"
+      role="banner"
+    >
+      {/* WHITE RECTANGLE */}
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex items-center justify-between rounded-2xl bg-white/100 px-6 py-3 shadow-lg backdrop-blur-5">
+          {/* LOGO */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-  src={ZdataLogo}
-  alt="Zdata logo"
-  width={140}
-  height={40}
-  priority
-/>
-            
+              src={ZdataLogo}
+              alt="Zdata logo"
+              width={140}
+              height={40}
+              priority
+            />
           </Link>
-        </div>
 
-        <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex gap-13 text-gray-700 items-center">
-            {LINKS.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="hover:underline">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          {/* DESKTOP NAV */}
+          <nav aria-label="Primary" className="hidden md:block">
+            <ul className="flex gap-10 text-sm font-medium text-slate-700 items-center">
+              {LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="hover:text-slate-900 transition"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <div className="flex items-center gap-3">
-          <a
-            href="/request-demo"
-            className="hidden md:inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-          >
-            Request a Demo
-          </a>
+          {/* ACTIONS */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/request-demo"
+              className="hidden md:inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700 transition"
+            >
+              Request a Demo
+            </Link>
 
-          <button
-            className="md:hidden text-gray-700"
-            aria-expanded={open}
-            aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? "Close" : "Menu"}
-          </button>
+            {/* MOBILE MENU */}
+            <button
+              className="md:hidden text-slate-700"
+              aria-expanded={open}
+              aria-label="Toggle menu"
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? "Close" : "Menu"}
+            </button>
+          </div>
         </div>
       </div>
 
+      {/* MOBILE DROPDOWN */}
       {open && (
-        <div className="md:hidden border-t border-gray-200">
-          <ul className="flex flex-col gap-2 px-4 py-3 text-gray-700">
-            {LINKS.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} onClick={() => setOpen(false)}>
-                  {link.label}
+        <div className="mx-auto mt-3 max-w-7xl px-4 md:hidden">
+          <div className="rounded-2xl bg-white shadow-lg">
+            <ul className="flex flex-col gap-2 px-6 py-4 text-slate-700">
+              {LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="block py-2"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li className="pt-2">
+                <Link
+                  href="/request-demo"
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg bg-blue-600 px-4 py-2 text-center text-white"
+                >
+                  Request a Demo
                 </Link>
               </li>
-            ))}
-            <li>
-              <Link href="/request-demo" onClick={() => setOpen(false)} className="block mt-2 px-3 py-2 bg-blue-600 text-white rounded-md text-center">
-                Request a Demo
-              </Link>
-            </li>
-          </ul>
+            </ul>
+          </div>
         </div>
       )}
     </header>

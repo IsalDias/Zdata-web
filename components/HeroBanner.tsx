@@ -37,7 +37,7 @@ export default function HeroBanner() {
         backgroundPosition: `center calc(50% + ${offset}px)`,
       }}
     >
-      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-black/0" />
 
       {/* ✅ Add Parallax HERE */}
       <Parallax speed={-30}>

@@ -4,14 +4,14 @@ import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
 
 const PARTNERS = [
-  { src: "images/companies/company1.png", alt: "People’s Leasing" },
-  { src: "images/companies/company2.png", alt: "Mahindra Ideal Finance" },
-  { src: "images/companies/company3.png", alt: "Seylan Bank" },
-  { src: "images/companies/company4.png", alt: "LCB Finance" },
-  { src: "images/companies/company5.png", alt: "Kingslake" },
-  { src: "images/companies/company6.png", alt: "OpenArc" },
-  { src: "images/companies/company7.png", alt: "Muntra" },
-  { src: "images/companies/company8.png", alt: "PMF Finance" },
+  { src: "/images/companies/company1.png", alt: "People’s Leasing" },
+  { src: "/images/companies/company2.png", alt: "Mahindra Ideal Finance" },
+  { src: "/images/companies/company3.png", alt: "Seylan Bank" },
+  { src: "/images/companies/company4.png", alt: "LCB Finance" },
+  { src: "/images/companies/company5.png", alt: "Kingslake" },
+  { src: "/images/companies/company6.png", alt: "OpenArc" },
+  { src: "/images/companies/company7.png", alt: "Muntra" },
+  { src: "/images/companies/company8.png", alt: "PMF Finance" },
 ];
 
 export default function Grid1() {
@@ -31,7 +31,7 @@ export default function Grid1() {
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:items-center">
 
           {/* LEFT CONTENT – parallax */}
-          <Parallax speed={-6} className="lg:col-span-5">
+          <Parallax speed={0} className="lg:col-span-5">
             <div>
               <h2 className="text-3xl font-light tracking-wide text-slate-900">
                 OUR VALUED <span className="font-extrabold">PARTNERS</span>
@@ -46,7 +46,7 @@ export default function Grid1() {
           </Parallax>
 
           {/* RIGHT LOGO GRID – opposite parallax */}
-          <Parallax speed={15} className="lg:col-span-7">
+          <Parallax speed={25} className="lg:col-span-7">
             <div className="grid grid-cols-2 md:grid-cols-4">
               {PARTNERS.map((p, idx) => (
                 <div
