@@ -48,7 +48,7 @@ export default function Figures() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#3f4d67]">
+    <section ref={sectionRef} className="bg-[#3f4d67] ">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 md:grid-cols-3">
           {FIGURES.map((item, idx) => (

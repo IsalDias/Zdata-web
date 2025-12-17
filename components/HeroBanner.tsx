@@ -65,38 +65,38 @@ export default function HeroBanner() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${Landingpage1.src})`,
-        backgroundPosition: `center calc(50% + ${offset}px)`,
-      }}
-    >
-      <div className="absolute inset-0 bg-black/0" />
+  <section
+    ref={sectionRef}
+    className="relative min-h-screen w-full bg-cover bg-center overflow-hidden"
+    style={{
+      backgroundImage: `url(${Landingpage1.src})`,
+      backgroundPosition: `center calc(50% + ${offset}px)`,
+    }}
+  >
+    <div className="absolute inset-0 bg-black/0" />
 
-      {/* text parallax (keep subtle) */}
-      <Parallax speed={-10}>
-        <div
-          ref={contentRef}
-          className="relative min-h-[650px] max-w-6xl mx-auto px-4 flex flex-col items-center justify-center text-center"
+    <Parallax speed={-10}>
+      <div
+        ref={contentRef}
+        className="relative min-h-screen max-w-6xl mx-auto px-4 flex flex-col items-center justify-center text-center"
+      >
+        <p className="hero-animate text-white/80">
+          Let&apos;s create digital products that have a
+        </p>
+
+        <h1 className="hero-animate mt-3 text-4xl md:text-6xl font-extrabold text-white">
+          SIGNIFICANT IMPACT
+        </h1>
+
+        <Link
+          href="/request-demo"
+          className="hero-animate mt-10 inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-white hover:bg-white/10"
         >
-          <p className="hero-animate text-white/80">
-            Let&apos;s create digital products that have a
-          </p>
+          Schedule a call →
+        </Link>
+      </div>
+    </Parallax>
+  </section>
+);
 
-          <h1 className="hero-animate mt-3 text-4xl md:text-6xl font-extrabold text-white">
-            SIGNIFICANT IMPACT
-          </h1>
-
-          <Link
-            href="/request-demo"
-            className="hero-animate mt-10 inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-white hover:bg-white/10"
-          >
-            Schedule a call →
-          </Link>
-        </div>
-      </Parallax>
-    </section>
-  );
 }

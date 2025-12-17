@@ -53,7 +53,12 @@ export default function DividerIcon() {
             <div className="mx-auto max-w-5.5xl px-4">
                 <div className="flex items-center justify-center gap-4">
                     {/* left line */}
-                    <div className="div-line-l h-px w-full max-w-[520px] bg-slate-900 bg-blue-900" />
+                    <div
+                        className="div-line-l h-px w-full max-w-[520px]"
+                        style={{
+                            background: "linear-gradient(to left, #398CDC 0%, #FFFFFF 100%)",
+                        }}
+                    />
 
                     {/* icon */}
                     <div className="div-icon relative h-24 w-24 rounded-md flex items-center justify-center">
@@ -67,9 +72,14 @@ export default function DividerIcon() {
                     </div>
 
                     {/* right line */}
-                    <div className="div-line-r h-px w-full max-w-[520px] bg-slate-900 bg-blue-900" />
-
+                    <div
+                        className="div-line-r h-px w-full max-w-[520px]"
+                        style={{
+                            background: "linear-gradient(to right, #398CDC 0%, #FFFFFF 100%)",
+                        }}
+                    />
                 </div>
+
             </div>
         </section>
     );
