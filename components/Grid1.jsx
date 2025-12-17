@@ -2,6 +2,11 @@
 
 import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PARTNERS = [
   { src: "/images/companies/company1.png", alt: "People’s Leasing" },
@@ -15,11 +20,45 @@ const PARTNERS = [
 ];
 
 export default function Grid1() {
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cells = gsap.utils.toArray(".partner-cell");
+
+      gsap.fromTo(
+        cells,
+        {
+          opacity: 0,
+          y: 40,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 85%",
+            end: "bottom 15%",
+            toggleActions: "play reset play reset",
+          },
+        }
+      );
+
+
+
+    }, gridRef);
+
+    return () => ctx.revert(); // cleanup
+  }, []);
+
   return (
-    <section className="relative bg-white py-24 md:py-32 lg:py-40">
+    <section className="relative bg-white py-24 md:py-32 lg:py-30">
       {/* background grid */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage:
             "linear-gradient(to right, rgba(15,23,42,.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,.3) 1px, transparent 1px)",
@@ -29,7 +68,6 @@ export default function Grid1() {
 
       <div className="relative mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:items-center">
-
           {/* LEFT CONTENT – parallax */}
           <Parallax speed={0} className="lg:col-span-5">
             <div>
@@ -45,26 +83,23 @@ export default function Grid1() {
             </div>
           </Parallax>
 
-          {/* RIGHT LOGO GRID – opposite parallax */}
-          <Parallax speed={25} className="lg:col-span-7">
-            <div className="grid grid-cols-2 md:grid-cols-4">
+          {/* RIGHT LOGO GRID */}
+          <Parallax speed={6} className="lg:col-span-7">
+            <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-4">
               {PARTNERS.map((p, idx) => (
                 <div
                   key={idx}
-                  className={`
+                  className="
+                    partner-cell
                     flex items-center justify-center
                     min-h-[160px] md:min-h-[190px]
                     px-3 bg-white
-
-                    /* vertical borders */
                     border-r border-slate-300
                     md:[&:nth-child(4n)]:border-r-0
-
-                    /* horizontal borders */
                     border-b border-slate-300
                     [&:nth-last-child(-n+2)]:border-b-0
                     md:[&:nth-last-child(-n+4)]:border-b-0
-                  `}
+                  "
                 >
                   <Image
                     src={p.src}
@@ -77,7 +112,6 @@ export default function Grid1() {
               ))}
             </div>
           </Parallax>
-
         </div>
       </div>
     </section>

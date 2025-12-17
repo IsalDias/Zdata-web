@@ -40,7 +40,7 @@ export default function TrustedCompanies({ items = [] }) {
           <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-center">
             {/* LEFT: Logo */}
             <div className="md:col-span-5 flex items-center justify-center">
-              <div className="relative h-28 w-[320px] md:h-36 md:w-[380px]">
+              <div className="relative h-28 w-[320px] md:h-22 md:w-[380px]">
                 <Image
                   src={current.logo}
                   alt={`${current.name} logo`}
