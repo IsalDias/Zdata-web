@@ -1,23 +1,28 @@
-import React from 'react'
-import ServicesHero from '@/components/Services/ServicesHero'
-import ServicesCards from '@/components/Services/ServicesCards'
-import OurApproach from '../../components/Services/OurApproach'
-import ReadyToGetStarted from '@/components/ReadyToGetStarted'
-import ExpertiseList from '@/components/Services/ExpertiseList'
-import PartnersMarquee from '@/components/Services/PartnersMarquee'
+
+import Products_Hero from '@/components/Products/Products_Hero'
+import FintechIntro from '@/components/Products/FintechIntro.jsx'
+import FinverusFeatures from '@/components/Products/FinverusFeatures.jsx'
+import DividerIcon from '@/components/DividerIcon.jsx'
+import LatestFromFinverus from '@/components/LatestFromFinverus.jsx'
+import StatementBar from '@/components/Products/StatementBar.jsx'
+import SuccessShowcase from '../../components/Products/SuccessShowcase'
+import GetStartedBanner from '@/components/GetStartedBanner.jsx'
+
 
 function page() {
   return (
     <div>
-      <ServicesHero />
-      <ServicesCards/>
-      <OurApproach />
-      <ExpertiseList />
-            {/* <hr className=" border-slate-300" /> */}
-            <PartnersMarquee/>
-
-      <ReadyToGetStarted />
-
+      <Products_Hero />
+      <FintechIntro />
+      <FinverusFeatures />
+      <>
+      <div className="my-2 md:my-1 lg:my-15" />
+      </>
+      <DividerIcon />
+      <LatestFromFinverus />
+      <StatementBar />
+      <SuccessShowcase />
+      <GetStartedBanner />
 
     </div>
   )

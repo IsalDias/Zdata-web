@@ -5,8 +5,8 @@ import { useState } from "react";
 
 // ✅ Replace these with your real images later (put in /public/images/...)
 const DEFAULT_INTEGRATIONS = [
-  "/images/integrations/int1.png",
-  "/images/integrations/int2.png",
+  // "/images/integrations/int1.png",
+  // "/images/integrations/int2.png",
 ];
 
 export default function GetStartedBanner({ integrations = DEFAULT_INTEGRATIONS }) {
