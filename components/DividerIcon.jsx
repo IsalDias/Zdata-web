@@ -51,34 +51,34 @@ export default function DividerIcon() {
     return (
         <section ref={wrapRef} className="bg-white py-10 md:py-1">
             <div className="mx-auto max-w-5.5xl px-4">
-                <div className="flex items-center justify-center gap-4">
-                    {/* left line */}
-                    <div
-                        className="div-line-l h-px w-full max-w-[520px]"
-                        style={{
-                            background: "linear-gradient(to left, #398CDC 0%, #FFFFFF 100%)",
-                        }}
-                    />
+               <div className="flex items-center justify-center gap-4">
+  {/* left line */}
+  <div
+    className="div-line-l h-px w-full max-w-[520px]"
+    style={{
+      background: "linear-gradient(to left, #398CDC 0%, #FFFFFF 100%)",
+    }}
+  />
 
-                    {/* icon */}
-                    <div className="div-icon relative h-24 w-24 rounded-md flex items-center justify-center">
-                        <Image
-                            src={finverusIcon}
-                            alt="Icon"
-                            width={75}
-                            height={75}
-                            className="object-contain"
-                        />
-                    </div>
+  {/* icon */}
+  <div className="div-icon relative h-24 w-24 rounded-md flex items-center justify-center">
+    <Image
+      src={finverusIcon}
+      alt="Icon"
+      width={75}
+      height={75}
+      className="object-contain"
+    />
+  </div>
 
-                    {/* right line */}
-                    <div
-                        className="div-line-r h-px w-full max-w-[520px]"
-                        style={{
-                            background: "linear-gradient(to right, #398CDC 0%, #FFFFFF 100%)",
-                        }}
-                    />
-                </div>
+  {/* right line */}
+  <div
+    className="div-line-r h-px w-full max-w-[520px]"
+    style={{
+      background: "linear-gradient(to right, #398CDC 0%, #FFFFFF 100%)",
+    }}
+  />
+</div> 
 
             </div>
         </section>

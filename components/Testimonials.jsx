@@ -5,13 +5,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Parallax } from "react-scroll-parallax";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import t1 from "../public/images/t1.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const DEFAULT_ITEMS = [
   {
     id: "lcb",
-    image: "/images/testimonials/t1.png",
+    image: t1,
     headingLight: "WHAT THEY",
     headingBold: "SAY ABOUT US",
     p1: "Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value.",
@@ -19,9 +20,9 @@ const DEFAULT_ITEMS = [
     name: "Mr. Shiran Maduwantha",
     designation: "CEO - LCB",
   },
-    {
+  {
     id: "lcb",
-    image: "/images/testimonials/t1.png",
+    image: t1,
     headingLight: "WHAT THEY",
     headingBold: "SAY ABOUT US",
     p1: "Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value.",
@@ -125,28 +126,39 @@ export default function Testimonials({ items = DEFAULT_ITEMS }) {
                 {current.name}
               </p>
               <p className="mt-1 text-xs text-slate-500">{current.designation}</p>
+
+              {data.length > 1 && (
+                <div className="ts-enter col-span-full flex justify-left gap-4 mt-10 md:mt-1 py-20">
+                  <button
+                    onClick={prev}
+                    aria-label="Previous testimonial"
+                    className="
+        h-10 w-10 rounded-full
+        border border-slate-300 bg-white
+        hover:bg-slate-50 transition
+      "
+                  >
+                    ←
+                  </button>
+
+                  <button
+                    onClick={next}
+                    aria-label="Next testimonial"
+                    className="
+        h-10 w-10 rounded-full
+        border border-slate-300 bg-white
+        hover:bg-slate-50 transition
+      "
+                  >
+                    →
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Controls */}
-          {data.length > 1 && (
-            <div className="ts-enter absolute right-2 md:right-0 top-1/2 -translate-y-1/2 flex flex-col gap-3">
-              <button
-                onClick={prev}
-                aria-label="Previous testimonial"
-                className="h-10 w-10 rounded-full border border-slate-300 bg-white hover:bg-slate-50"
-              >
-                ←
-              </button>
-              <button
-                onClick={next}
-                aria-label="Next testimonial"
-                className="h-10 w-10 rounded-full border border-slate-300 bg-white hover:bg-slate-50"
-              >
-                →
-              </button>
-            </div>
-          )}
+
         </div>
       </div>
     </section>

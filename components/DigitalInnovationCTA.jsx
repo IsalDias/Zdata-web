@@ -92,7 +92,7 @@ export default function DigitalInnovationCTA() {
       </div>
 
       <div className="mx-auto max-w-[90rem] px-4">
-        <div className="py-16 sm:py-20 md:py-24">
+        <div className="py-16 sm:py-20 md:py-16">
           <div className="flex flex-col items-center text-center">
             {/* ✅ Pill image + DIGITAL INNOVATION on the same row */}
             <div className="flex items-center justify-center gap-6">

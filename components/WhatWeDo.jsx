@@ -37,24 +37,24 @@ const DEFAULT_ITEMS = [
     p2: "Flexible engagement, predictable delivery, and strong ownership—without long hiring cycles.",
   },
   {
-    id: "managed-services",
-    label: "Managed Services",
+    id: "managed-services1",
+    label: "Managed Services 1",
     icon: SecurityIcon,
     title: "Managed Services",
     p1: "Keep systems stable with monitoring, incident response, maintenance, and continuous improvements.",
     p2: "We focus on reliability, security, and performance so your team can focus on product growth.",
   },
    {
-    id: "managed-services",
-    label: "Managed Services",
+    id: "managed-services2",
+    label: "Managed Services 2",
     icon: SecurityIcon,
-    title: "Managed Services",
+    title: "Managed Services3",
     p1: "Keep systems stable with monitoring, incident response, maintenance, and continuous improvements.",
     p2: "We focus on reliability, security, and performance so your team can focus on product growth.",
   },
    {
     id: "managed-services",
-    label: "Managed Services",
+    label: "Managed Services 3",
     icon: SecurityIcon,
     title: "Managed Services",
     p1: "Keep systems stable with monitoring, incident response, maintenance, and continuous improvements.",
@@ -123,8 +123,17 @@ export default function WhatWeDo({ items = DEFAULT_ITEMS }) {
   }, [activeId]);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#061427] text-white">
-      <div className="relative mx-auto max-w-[90rem] px-4 py-16 md:py-24 lg:py-1.5">
+    <section ref={sectionRef}
+    className="relative text-white overflow-hidden py-16 md:py-24 lg:py-32" 
+    style={{
+      backgroundColor: "#031322",
+      backgroundImage:
+        "radial-gradient(ellipse at center, #1F315A 0%, #031322 70%)",
+    }}
+    
+    >
+
+      <div className="relative mx-auto max-w-[90rem] px-4 py-16 md:py-24 lg:py-1">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-stretch">
           {/* LEFT LIST */}
           <div className="wwd-fade md:col-span-5">

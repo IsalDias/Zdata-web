@@ -29,13 +29,13 @@ export default function ReadyToGetStarted() {
         opacity: 1,
         y: 0,
         duration: 0.35,
-        ease: "power2.out",
+        ease: "power4.out",
       })
         .to(".rgs-line", {
           opacity: 1,
           y: 0,
           duration: 0.45,
-          ease: "power3.out",
+          ease: "power4.out",
           stagger: 0.12,
         })
         .to(
@@ -43,9 +43,9 @@ export default function ReadyToGetStarted() {
           {
             opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 0.4,
-            ease: "power3.out",
+            // scale: 1,
+            duration: 0.1,
+            ease: "power4.out",
           },
           "-=0.15"
         );
@@ -55,7 +55,7 @@ export default function ReadyToGetStarted() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#f3f3f3] py-16 md:py-24">
+    <section ref={sectionRef} className="bg-[#f3f3f3] py-16 md:py-24 ">
       <div className="mx-auto max-w-7xl px-4">
         {/* top mini text + right line */}
         <div className="relative mb-10 md:mb-14">

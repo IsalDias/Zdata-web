@@ -93,7 +93,7 @@ export default function GetStartedBanner({ integrations = DEFAULT_INTEGRATIONS }
         .animated-gradient {
           background: linear-gradient(105deg, #05213c 0%, #3a6ca6 45%, #0066cc 100%);
           background-size: 200% 200%;
-          animation: gradientMove 7s ease-in-out infinite;
+          animation: gradientMove 5s ease-in-out infinite;
         }
 
         @keyframes gradientMove {
