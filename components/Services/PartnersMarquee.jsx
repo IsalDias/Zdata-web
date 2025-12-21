@@ -179,21 +179,26 @@ export default function PartnersMarquee({
     );
 }
 
-function LogoItem({ src, alt, logoHeight }) {
-    // ✅ Guarantee width so the row becomes scrollable
-    const ratio = src.width / src.height;
-    const w = Math.round(ratio * logoHeight);
-
-    return (
-        <div className="min-w-max opacity-85 grayscale transition hover:opacity-100 hover:grayscale-0">
-            <Image
-                src={src}
-                alt={alt}
-                width={w}
-                height={logoHeight}
-                draggable={false}
-                className="h-auto w-auto"
-            />
-        </div>
-    );
+function LogoItem({ src, alt }) {
+  return (
+    <div
+      className="
+        flex items-center justify-center
+        w-[140px] h-[44px]
+        md:w-[160px] md:h-[52px]
+        lg:w-[180px] lg:h-[56px]
+        opacity-85 grayscale transition
+        hover:opacity-100 hover:grayscale-0
+      "
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        draggable={false}
+        className="object-contain"
+        sizes="(max-width: 768px) 140px, (max-width: 1024px) 160px, 180px"
+      />
+    </div>
+  );
 }
