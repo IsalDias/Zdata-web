@@ -66,7 +66,7 @@ export default function Grid1() {
   }, []);
 
   return (
-    <section className="relative bg-white py-24 md:py-8 lg:py-20">
+    <section className="relative bg-white py-12 sm:py-16 md:py-20 lg:py-24">
       {/* background grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
@@ -77,16 +77,16 @@ export default function Grid1() {
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:items-center">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:gap-14 lg:grid-cols-12 lg:items-center">
           {/* LEFT CONTENT – parallax */}
           <Parallax speed={0} className="lg:col-span-5">
             <div>
-              <h2 className="text-3xl font-light tracking-wide text-slate-900">
+              <h2 className="text-2xl sm:text-3xl font-light tracking-wide text-slate-900">
                 OUR VALUED <span className="font-extrabold">PARTNERS</span>
               </h2>
 
-              <p className="mt-6 max-w-md text-sm leading-7 text-slate-600">
+              <p className="mt-4 sm:mt-6 max-w-md text-xs sm:text-sm leading-6 sm:leading-7 text-slate-600">
                 ZData Innovations Pvt Ltd, founded in 2023, is a dynamic software
                 development and consultancy firm specializing in innovative and
                 scalable digital solutions.
@@ -96,7 +96,7 @@ export default function Grid1() {
 
           {/* RIGHT LOGO GRID */}
           <Parallax speed={6} className="lg:col-span-7">
-            <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-4">
+            <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-4 gap-0">
               {PARTNERS.map((p, idx) => (
                 <div
                   key={idx}

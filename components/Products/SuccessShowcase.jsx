@@ -153,7 +153,7 @@ export default function SuccessShowcase({ items, defaultId }) {
                                             src={logo.src}
                                             alt={logo.alt}
                                             className="max-h-8 w-auto object-contain"
-                                            draggable={false}sd
+                                            draggable={false}
                                         />
                                     </div>
                                 ))}

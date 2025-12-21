@@ -103,21 +103,21 @@ export default function TrustedCompanies({ items = [] }) {
   };
 
   return (
-    <section ref={sectionRef} className="bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-[100rem] px-4">
+    <section ref={sectionRef} className="bg-white py-12 sm:py-16 md:py-24">
+      <div className="mx-auto max-w-[100rem] px-4 sm:px-6">
         <div
           ref={cardRef}
           className="
-    tc-in relative rounded-3xl bg-[#f7f7f7]
-    px-8 py-14 md:px-14 md:py-16
-    min-h-[520px] md:min-h-[420px]
+    tc-in relative rounded-2xl sm:rounded-3xl bg-[#f7f7f7]
+    px-6 sm:px-8 py-10 sm:py-14 md:px-14 md:py-16
+    min-h-auto sm:min-h-[520px] md:min-h-[420px]
   "
         >
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-center">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:gap-10 md:grid-cols-12 md:items-center">
             {/* LEFT: Logo (parallax) */}
             <div className="md:col-span-5 flex items-center justify-center">
               <Parallax speed={-8}>
-                <div className="tc-swap relative h-28 w-[320px] md:h-24 md:w-[520px]">
+                <div className="tc-swap relative h-24 w-[260px] sm:h-28 sm:w-[320px] md:h-24 md:w-[520px]">
                   <Image
                     src={current.logo}
                     alt={`${current.name} logo`}
@@ -137,18 +137,18 @@ export default function TrustedCompanies({ items = [] }) {
             {/* RIGHT: Text (parallax opposite) */}
             <div className="md:col-span-6">
               <Parallax speed={6}>
-                <h3 className="tc-swap text-2xl md:text-3xl font-light text-slate-700 tracking-wide">
+                <h3 className="tc-swap text-lg sm:text-2xl md:text-3xl font-light text-slate-700 tracking-wide">
                   {current.title.split("LEADING COMPANIES")[0]}
                   <span className="font-extrabold text-slate-700">
                     LEADING COMPANIES
                   </span>
                 </h3>
 
-                <p className="tc-swap mt-6 text-sm md:text-[15px] leading-7 text-slate-600">
+                <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600">
                   {current.p1}
                 </p>
 
-                <p className="tc-swap mt-6 text-sm md:text-[15px] leading-7 text-slate-600">
+                <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600">
                   {current.p2}
                 </p>
               </Parallax>
@@ -162,7 +162,7 @@ export default function TrustedCompanies({ items = [] }) {
                 ref={prevBtnRef}
                 onClick={prev}
                 aria-label="Previous company"
-                className="absolute left-6 bottom-6 rounded-full border border-slate-300 bg-white/70 px-4 py-3 text-slate-700 hover:bg-white"
+                className="absolute left-4 sm:left-6 bottom-4 sm:bottom-6 rounded-full border border-slate-300 bg-white/70 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-base text-slate-700 hover:bg-white transition"
               >
                 ←
               </button>
@@ -171,13 +171,13 @@ export default function TrustedCompanies({ items = [] }) {
                 ref={nextBtnRef}
                 onClick={next}
                 aria-label="Next company"
-                className="absolute right-6 bottom-6 rounded-full border border-slate-300 bg-white/70 px-4 py-3 text-slate-700 hover:bg-white"
+                className="absolute right-4 sm:right-6 bottom-4 sm:bottom-6 rounded-full border border-slate-300 bg-white/70 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-base text-slate-700 hover:bg-white transition"
               >
                 →
               </button>
 
               {/* Dots */}
-              <div className="absolute bottom-7 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
                 {data.map((_, i) => (
                   <span
                     key={i}

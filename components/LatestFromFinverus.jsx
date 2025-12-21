@@ -32,9 +32,9 @@ function LatestCard({ item }) {
   return (
     <div
       className="
-        group relative overflow-hidden rounded-2xl
-        h-[170px] w-[40px] md:h-[310px] md:w-[380px]
-        bg-slate-200
+        group relative overflow-hidden rounded-lg sm:rounded-2xl
+        h-[150px] w-[280px] sm:h-[200px] sm:w-[340px] md:h-[310px] md:w-[380px]
+        bg-slate-200 flex-shrink-0
       "
     >
       {/* Image */}
@@ -68,16 +68,16 @@ function LatestCard({ item }) {
       */}
       <div
         className="
-          absolute bottom-0 left-0 right-0 p-4
+          absolute bottom-0 left-0 right-0 p-3 sm:p-4
           translate-y-0 md:translate-y-3 md:group-hover:translate-y-0
           opacity-100 md:opacity-0 md:group-hover:opacity-100
           transition-all duration-300
         "
       >
-        <h3 className="text-white text-sm md:text-base font-semibold">
+        <h3 className="text-white text-xs sm:text-sm md:text-base font-semibold">
           {item.title}
         </h3>
-        <p className="mt-1 text-white/80 text-[11px] md:text-xs leading-5">
+        <p className="mt-1 text-white/80 text-[10px] sm:text-xs md:text-xs leading-4 sm:leading-5">
           {item.description}
         </p>
       </div>
@@ -92,23 +92,23 @@ export default function LatestFromFinverus({
   const data = items?.length ? items : DEFAULT_ITEMS;
 
   return (
-    <section className="bg-white py-12 md:py-12">
-      <div className="mx-auto max-w-7xl px-4">
+    <section className="bg-white py-10 sm:py-12 md:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* Heading */}
-        <h2 className="text-center text-lg md:text-xl text-slate-700">
+        <h2 className="text-center text-base sm:text-lg md:text-xl text-slate-700">
           The Latest from <span className="font-extrabold text-slate-800">Finverus</span>
         </h2>
 
         {/* Desktop row */}
-        <div className="mt-8 hidden md:flex items-center justify-center gap-10">
+        <div className="mt-6 sm:mt-8 md:mt-10 hidden md:flex items-center justify-center gap-6 md:gap-8 lg:gap-10">
           {data.map((item) => (
             <LatestCard key={item.id} item={item} />
           ))}
         </div>
 
         {/* Mobile swipe */}
-        <div className="mt-8 md:hidden -mx-4 px-4 overflow-x-auto">
-          <div className="flex gap-4 w-max pr-2">
+        <div className="mt-6 sm:mt-8 md:hidden -mx-4 px-4 overflow-x-auto scrollbar-hide">
+          <div className="flex gap-4 w-max pb-2">
             {data.map((item) => (
               <LatestCard key={item.id} item={item} />
             ))}

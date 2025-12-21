@@ -78,19 +78,19 @@ export default function HeroBanner() {
     <Parallax speed={-10}>
       <div
         ref={contentRef}
-        className="relative min-h-screen max-w-6xl mx-auto px-4 flex flex-col items-center justify-center text-center"
+        className="relative min-h-screen max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-center text-center"
       >
-        <p className="hero-animate text-white/80">
+        <p className="hero-animate text-xs sm:text-sm md:text-base text-white/80 tracking-wide">
           Let&apos;s create digital products that have a
         </p>
 
-        <h1 className="hero-animate mt-3 text-4xl md:text-6xl font-extrabold text-white">
+        <h1 className="hero-animate mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
           SIGNIFICANT IMPACT
         </h1>
 
         <Link
           href="/request-demo"
-          className="hero-animate mt-10 inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-white hover:bg-white/10"
+          className="hero-animate mt-8 sm:mt-10 inline-flex items-center gap-2 rounded-full border border-white/40 px-5 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm text-white hover:bg-white/10 transition"
         >
           Schedule a call →
         </Link>

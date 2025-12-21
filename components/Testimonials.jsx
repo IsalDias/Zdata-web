@@ -84,14 +84,14 @@ export default function Testimonials({ items = DEFAULT_ITEMS }) {
   }, [index]);
 
   return (
-    <section ref={sectionRef} className="bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="relative grid grid-cols-1 gap-10 md:grid-cols-12 md:items-start">
+    <section ref={sectionRef} className="bg-white py-12 sm:py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="relative grid grid-cols-1 gap-6 sm:gap-8 md:gap-10 md:grid-cols-12 md:items-start">
           {/* LEFT IMAGE (Parallax) */}
           <div className="ts-enter md:col-span-4">
             <Parallax speed={-6}>
               <div className="relative overflow-hidden rounded-2xl bg-slate-200">
-                <div className="relative h-[360px] md:h-[520px]">
+                <div className="relative h-[300px] sm:h-[360px] md:h-[520px]">
                   <Image
                     src={current.image}
                     alt={current.name}
@@ -106,29 +106,29 @@ export default function Testimonials({ items = DEFAULT_ITEMS }) {
 
           {/* RIGHT CONTENT */}
           <div ref={contentRef} className="ts-enter md:col-span-8 md:pl-10">
-            <h3 className="ts-swap text-xl md:text-2xl font-light tracking-wide text-slate-600">
+            <h3 className="ts-swap text-lg sm:text-xl md:text-2xl font-light tracking-wide text-slate-600">
               {current.headingLight}{" "}
               <span className="font-extrabold text-slate-700">
                 {current.headingBold}
               </span>
             </h3>
 
-            <p className="ts-swap mt-6 text-sm md:text-[15px] leading-7 text-slate-600">
+            <p className="ts-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600">
               {current.p1}
             </p>
 
-            <p className="ts-swap mt-6 text-sm md:text-[15px] leading-7 text-slate-600">
+            <p className="ts-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600">
               {current.p2}
             </p>
 
-            <div className="ts-swap mt-10">
-              <p className="text-sm font-semibold text-slate-800">
+            <div className="ts-swap mt-8 sm:mt-10">
+              <p className="text-xs sm:text-sm font-semibold text-slate-800">
                 {current.name}
               </p>
               <p className="mt-1 text-xs text-slate-500">{current.designation}</p>
 
               {data.length > 1 && (
-                <div className="ts-enter col-span-full flex justify-left gap-4 mt-10 md:mt-1 py-20">
+                <div className="ts-enter col-span-full flex justify-start gap-3 mt-8 sm:mt-10 py-12 sm:py-16 md:py-20">
                   <button
                     onClick={prev}
                     aria-label="Previous testimonial"

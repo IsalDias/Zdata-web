@@ -24,7 +24,7 @@ export default function DividerIcon() {
                     trigger: wrapRef.current,
                     start: "top 85%",
                     end: "bottom 20%",
-                    toggleActions: "play reset play reset", // replay when scroll up/down again
+                    toggleActions: "play none play none", // replay when scroll up/down again
                 },
             });
 

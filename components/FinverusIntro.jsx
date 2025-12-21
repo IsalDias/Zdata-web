@@ -48,9 +48,9 @@ export default function FinverusIntro() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white py-14 md:py-20">
-      <div className="mx-auto max-w-[90rem] px-4">
-        <div className="relative overflow-hidden rounded-[2.25rem]">
+    <section ref={sectionRef} className="bg-white py-10 sm:py-14 md:py-16 lg:py-20">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6">
+        <div className="relative overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2.25rem]">
           {/* background */}
           <Image
             src={finverusBg}
@@ -64,17 +64,17 @@ export default function FinverusIntro() {
           <div className="absolute inset-0 bg-[#061427]/70 align-middle" />
 
           {/* content */}
-          <div className="relative grid grid-cols-1 gap-10 px-6 py-12 md:grid-cols-12 md:gap-12 md:px-14 md:py-16">
+          <div className="relative grid grid-cols-1 gap-8 sm:gap-10 md:gap-12 px-4 sm:px-8 py-10 sm:py-12 md:grid-cols-12 md:px-14 md:py-16">
             {/* LEFT: centered "Introducing" + logo */}
 <div className="finv-left md:col-span-5 flex items-center">
   <div className="w-full flex flex-col items-center justify-center text-center">
     {/* Introducing */}
-    <p className="text-xl md:text-2xl font-light text-white">
+    <p className="text-base sm:text-xl md:text-2xl font-light text-white">
       Introducing
     </p>
 
     {/* Logo */}
-    <div className="mt-5 w-[220px] sm:w-[280px] md:w-[360px]">
+    <div className="mt-4 sm:mt-5 w-[180px] sm:w-[260px] md:w-[320px] lg:w-[360px]">
       <Image
         src={finverusLogo}
         alt="Finverus logo"
@@ -88,7 +88,7 @@ export default function FinverusIntro() {
 
             {/* RIGHT */}
             <div className="finv-right md:col-span-7 flex flex-col justify-center">
-              <p className="text-white/85 text-sm md:text-[15px] leading-7 max-w-3xl">
+              <p className="text-white/85 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 max-w-3xl">
                 At ZData Innovations, we are committed to excellence, innovation,
                 and collaboration. Our team of seasoned professionals blends
                 technical expertise with creativity to build robust, future-ready
@@ -97,7 +97,7 @@ export default function FinverusIntro() {
                 in the digital era.
               </p>
 
-              <p className="mt-6 text-white/85 text-sm md:text-[15px] leading-7 max-w-3xl">
+              <p className="mt-4 sm:mt-6 text-white/85 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 max-w-3xl">
                 At ZData Innovations, we are committed to excellence, innovation,
                 and collaboration. Our team of seasoned professionals blends
                 technical expertise with creativity to build robust, future-ready
@@ -106,13 +106,13 @@ export default function FinverusIntro() {
                 in the digital era.
               </p>
 
-              <div className="finv-btn mt-10 flex justify-center md:justify-start">
+              <div className="finv-btn mt-8 sm:mt-10 flex justify-center md:justify-start">
                 <Link
                   href="/request-demo"
-                  className="inline-flex items-center gap-4 rounded-full bg-[#0ea5ff] px-7 py-3 text-white font-medium hover:bg-[#0b94e6] transition"
+                  className="inline-flex items-center gap-3 sm:gap-4 rounded-full bg-[#0ea5ff] px-5 sm:px-7 py-2 sm:py-3 text-xs sm:text-sm text-white font-medium hover:bg-[#0b94e6] transition"
                 >
                   Schedule a call
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#0ea5ff] font-bold">
+                  <span className="inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-white text-[#0ea5ff] font-bold text-xs sm:text-sm">
                     →
                   </span>
                 </Link>

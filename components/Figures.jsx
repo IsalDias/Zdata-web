@@ -34,7 +34,7 @@ export default function Figures() {
               trigger: sectionRef.current,
               start: "top 80%",
               end: "bottom 20%",
-              toggleActions: 'play reset play reset',
+              toggleActions: "play none none none",
             },
             onUpdate: function () {
               el.innerText = `${Math.floor(el.innerText)}K +`;
@@ -48,26 +48,26 @@ export default function Figures() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#3f4d67] ">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3">
+    <section ref={sectionRef} className="bg-[#3f4d67]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
           {FIGURES.map((item, idx) => (
             <div
               key={idx}
-              className={`py-12 text-center text-white ${
+              className={`py-8 sm:py-10 md:py-12 px-4 text-center text-white ${
                 idx !== FIGURES.length - 1
-                  ? "md:border-r md:border-white/35"
+                  ? "sm:border-r sm:border-white/35"
                   : ""
-              }`}
+              } border-b border-white/35 sm:border-b-0 last:border-b-0`}
             >
               <div
-                className="figure-value text-3xl font-extrabold tracking-wide"
+                className="figure-value text-2xl sm:text-3xl font-extrabold tracking-wide"
                 data-value={item.value}
               >
                 0K +
               </div>
 
-              <div className="mt-2 text-xs text-white/80">
+              <div className="mt-2 text-xs sm:text-sm text-white/80">
                 {item.label}
               </div>
             </div>

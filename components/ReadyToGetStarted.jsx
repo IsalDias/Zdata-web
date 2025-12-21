@@ -21,7 +21,7 @@ export default function ReadyToGetStarted() {
           trigger: sectionRef.current,
           start: "top 80%",
           end: "bottom 20%",
-          toggleActions: "play reset play reset",
+          toggleActions: "play none play none",
         },
       });
 
@@ -55,38 +55,38 @@ export default function ReadyToGetStarted() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#f3f3f3] py-16 md:py-24 ">
-      <div className="mx-auto max-w-7xl px-4">
+    <section ref={sectionRef} className="bg-[#f3f3f3] py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* top mini text + right line */}
-        <div className="relative mb-10 md:mb-14">
-          <div className="rgs-top flex items-start justify-end gap-4">
-            <p className="text-[10px] sm:text-xs text-slate-500 text-right leading-4">
+        <div className="relative mb-8 sm:mb-10 md:mb-14">
+          <div className="rgs-top flex items-start justify-end gap-2 sm:gap-4">
+            <p className="text-[9px] sm:text-xs text-slate-500 text-right leading-3 sm:leading-4">
               From idea to execution,
               <br />
               ZData powers your digital growth.
             </p>
-            <div className="h-px w-[32vw] max-w-[360px] bg-slate-300" />
+            <div className="h-px w-[28vw] sm:w-[32vw] max-w-[360px] bg-slate-300 mt-1" />
           </div>
         </div>
 
         {/* main center text */}
         <div className="text-center">
-          <h2 className="rgs-line text-xl sm:text-2xl md:text-3xl font-light tracking-wide text-slate-700">
+          <h2 className="rgs-line text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-wide text-slate-700">
             LET&apos;S TRANSFORM <span className="font-extrabold">YOUR FINTECH JOURNEY</span>
           </h2>
 
-          <h3 className="rgs-line mt-2 text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wide text-slate-700">
+          <h3 className="rgs-line mt-2 sm:mt-3 text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold tracking-wide text-slate-700">
             TOGETHER. READY TO <span className="font-light">GET STARTED?</span>
           </h3>
 
           {/* button */}
-          <div className="mt-10 md:mt-12 flex justify-center">
+          <div className="mt-8 sm:mt-10 md:mt-12 flex justify-center">
             <Link
               href="/contactus"
-              className="rgs-btn inline-flex items-center gap-3 rounded-full bg-[#0ea5ff] px-6 py-3 text-white text-sm font-medium hover:bg-[#0b94e6] transition"
+              className="rgs-btn inline-flex items-center gap-2 sm:gap-3 rounded-full bg-[#0ea5ff] px-5 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm text-white font-medium hover:bg-[#0b94e6] transition"
             >
               Contact Us
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#0ea5ff] font-bold">
+              <span className="inline-flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-white text-[#0ea5ff] font-bold text-xs sm:text-base">
                 →
               </span>
             </Link>

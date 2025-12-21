@@ -7,6 +7,8 @@ import LatestFromFinverus from '@/components/LatestFromFinverus.jsx'
 import StatementBar from '@/components/Products/StatementBar.jsx'
 import SuccessShowcase from '../../components/Products/SuccessShowcase'
 import GetStartedBanner from '@/components/GetStartedBanner.jsx'
+import ProductModules from '@/components/Products/ProductModules.jsx'
+import AiEnabledBanner from '@/components/Products/AiEnabledBanner.jsx'
 
 
 function page() {
@@ -22,6 +24,8 @@ function page() {
       <LatestFromFinverus />
       <StatementBar />
       <SuccessShowcase />
+      <ProductModules />  
+      <AiEnabledBanner />
       <GetStartedBanner />
 
     </div>

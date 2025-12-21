@@ -124,7 +124,7 @@ export default function WhatWeDo({ items = DEFAULT_ITEMS }) {
 
   return (
     <section ref={sectionRef}
-    className="relative text-white overflow-hidden py-16 md:py-24 lg:py-32" 
+    className="relative text-white overflow-hidden py-12 sm:py-16 md:py-24 lg:py-32" 
     style={{
       backgroundColor: "#031322",
       backgroundImage:
@@ -133,15 +133,15 @@ export default function WhatWeDo({ items = DEFAULT_ITEMS }) {
     
     >
 
-      <div className="relative mx-auto max-w-[90rem] px-4 py-16 md:py-24 lg:py-1">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:items-stretch">
+      <div className="relative mx-auto max-w-[90rem] px-4 sm:px-6 py-12 sm:py-16 md:py-24">
+        <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-14 md:grid-cols-12 md:items-stretch">
           {/* LEFT LIST */}
           <div className="wwd-fade md:col-span-5">
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-wide">
               <span className="font-extrabold">WHAT</span> WE DO ?
             </h2>
 
-            <div className="mt-8 border-t border-white/15 align-t">
+            <div className="mt-6 sm:mt-8 border-t border-white/15 align-t">
               {data.map((item) => {
                 const isActive = item.id === activeId;
 
@@ -152,11 +152,11 @@ export default function WhatWeDo({ items = DEFAULT_ITEMS }) {
                     onMouseEnter={() => setActiveId(item.id)}
                     onFocus={() => setActiveId(item.id)}
                     onClick={() => setActiveId(item.id)}
-                    className={`group w-full text-left flex items-center gap-4 py-6 border-b border-white/15 transition
+                    className={`group w-full text-left flex items-center gap-3 sm:gap-4 py-4 sm:py-6 border-b border-white/15 transition
                       ${isActive ? "text-white" : "text-white/80 hover:text-white"}`}
                   >
                     <span
-                      className={`inline-flex h-10 w-10 items-center justify-center rounded-lg border transition
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-lg border transition flex-shrink-0
                       ${
                         isActive
                           ? "border-white/40 bg-white/10"
@@ -167,12 +167,12 @@ export default function WhatWeDo({ items = DEFAULT_ITEMS }) {
                       <RenderIcon icon={item.icon} size="small" />
                     </span>
 
-                    <span className="text-base md:text-lg font-medium">
+                    <span className="text-sm sm:text-base md:text-lg font-medium">
                       {item.label}
                     </span>
 
                     <span
-                      className={`ml-auto h-px w-10 transition-opacity
+                      className={`ml-auto h-px w-8 sm:w-10 transition-opacity
                       ${
                         isActive
                           ? "bg-blue-400 opacity-100"
@@ -195,21 +195,21 @@ export default function WhatWeDo({ items = DEFAULT_ITEMS }) {
 
             <div
               ref={rightRef}
-              className="rounded-2xl bg-white/5 border border-white/10 p-10 backdrop-blur"
+              className="rounded-2xl bg-white/5 border border-white/10 p-8 sm:p-10 backdrop-blur"
             >
               <div className="wwd-right-anim inline-flex h-14 w-14 items-center justify-center rounded-xl border border-white/20 bg-white/5">
                 <RenderIcon icon={active.icon} size="medium" />
               </div>
 
-              <h3 className="wwd-right-anim mt-6 text-3xl font-semibold">
+              <h3 className="wwd-right-anim mt-6 text-2xl sm:text-3xl font-semibold">
                 {active.title}
               </h3>
 
-              <p className="wwd-right-anim mt-6 text-sm leading-7 text-white/80 max-w-2xl">
+              <p className="wwd-right-anim mt-6 text-xs sm:text-sm leading-7 text-white/80 max-w-2xl">
                 {active.p1}
               </p>
 
-              <p className="wwd-right-anim mt-6 text-sm leading-7 text-white/80 max-w-2xl">
+              <p className="wwd-right-anim mt-6 text-xs sm:text-sm leading-7 text-white/80 max-w-2xl">
                 {active.p2}
               </p>
             </div>
