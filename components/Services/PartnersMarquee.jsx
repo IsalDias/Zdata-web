@@ -6,13 +6,18 @@ import Image from "next/image";
 import company1 from "@/public/images/company1.png";
 import company2 from "@/public/images/company2.png";
 import company3 from "@/public/images/company3.png";
+import company4 from "@/public/images/company4.png";
+import company5 from "@/public/images/company5.png";
+import company6 from "@/public/images/company6.png";
+import company7 from "@/public/images/company7.png";
+import company8 from "@/public/images/company8.png";
 
 export default function PartnersMarquee({
 
     speed = 80, // px/sec (bigger = faster)
     direction = "left", // "left" | "right"
-    heightClass = "h-442 md:h-36", // taller bar
-    logoHeight = 46, // bigger logos
+    heightClass = "h-442 md:h-24", // taller bar
+    logoHeight = 34, // bigger logos
 }) {
     const trackRef = useRef(null);
     const rafRef = useRef(null);
@@ -30,6 +35,11 @@ export default function PartnersMarquee({
             { alt: "HDFC Bank", src: company1 },
             { alt: "Mahindra Ideal Finance", src: company2 },
             { alt: "Seylan Bank", src: company3 },
+            { alt: "Seylan Bank", src: company4 },
+            { alt: "Seylan Bank", src: company5 },
+            { alt: "Seylan Bank", src: company6 },
+            { alt: "Seylan Bank", src: company7 },
+            { alt: "Seylan Bank", src: company8 },
         ],
         []
     );
