@@ -66,7 +66,7 @@ export default function FinverusFeatures({ items }) {
           trigger: sectionRef.current,
           start: "top 80%",
           end: "bottom 20%",
-          toggleActions: "play reset play reset",
+          toggleActions: "play none play none",
         },
       });
 
