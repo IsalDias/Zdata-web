@@ -9,6 +9,8 @@ import SuccessShowcase from '../../components/Products/SuccessShowcase'
 import GetStartedBanner from '@/components/GetStartedBanner.jsx'
 import ProductModules from '@/components/Products/ProductModules.jsx'
 import AiEnabledBanner from '@/components/Products/AiEnabledBanner.jsx'
+import PartnersMarquee from '@/components/Services/PartnersMarquee.jsx'
+import ReadyToGetStarted from '@/components/ReadyToGetStarted'
 
 
 function page() {
@@ -26,7 +28,8 @@ function page() {
       <SuccessShowcase />
       <ProductModules />  
       <AiEnabledBanner />
-      <GetStartedBanner />
+      <PartnersMarquee />
+      <ReadyToGetStarted />
 
     </div>
   )

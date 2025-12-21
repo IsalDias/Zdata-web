@@ -18,9 +18,10 @@ export default function AiEnabledBanner() {
 
     const card = root.querySelector("[data-card]");
     const imgLayer = root.querySelector("[data-bgimg]");
-    const gradientLayer = root.querySelector("[data-grad-layer]");
     const glow = root.querySelector("[data-glow]");
-    const ring = root.querySelector("[data-ring]");
+    const gradLayer = root.querySelector("[data-grad-layer]");
+    const pill = root.querySelector("[data-pill]");
+    const pillGrad = root.querySelector("[data-pill-grad]");
 
     const prefersReduced =
       typeof window !== "undefined" &&
@@ -28,7 +29,7 @@ export default function AiEnabledBanner() {
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const ctx = gsap.context(() => {
-      // reveal
+      // Reveal
       gsap.fromTo(
         card,
         { opacity: 0, y: 26 },
@@ -41,10 +42,10 @@ export default function AiEnabledBanner() {
         }
       );
 
-      // scroll parallax
+      // Parallax (image)
       if (imgLayer) {
         gsap.to(imgLayer, {
-          y: -16,
+          y: -14,
           ease: "none",
           scrollTrigger: {
             trigger: root,
@@ -55,22 +56,15 @@ export default function AiEnabledBanner() {
         });
       }
 
-      // subtle moving gradient on the whole card (visible)
-      if (gradientLayer && !prefersReduced) {
-        gsap.to(gradientLayer, {
-          backgroundPosition: "120% 50%",
-          duration: 5.5,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-        });
-
+      // ✅ NO WIPE: Remove background-position animation entirely.
+      // Instead, do a smooth color shift only.
+      if (gradLayer && !prefersReduced) {
         gsap.fromTo(
-          gradientLayer,
-          { filter: "hue-rotate(0deg) saturate(1.15) brightness(1)" },
+          gradLayer,
+          { filter: "hue-rotate(0deg) saturate(1.05) brightness(1)" },
           {
-            filter: "hue-rotate(22deg) saturate(1.3) brightness(1.06)",
-            duration: 3.6,
+            filter: "hue-rotate(20deg) saturate(1.2) brightness(1.06)",
+            duration: 4,
             ease: "sine.inOut",
             repeat: -1,
             yoyo: true,
@@ -78,19 +72,8 @@ export default function AiEnabledBanner() {
         );
       }
 
-      // ✅ Button: thin edge stroke with a small moving gradient segment
-      if (ring && !prefersReduced) {
-        gsap.to(ring, {
-          rotate: 360,
-          duration: 2.6,
-          ease: "none",
-          repeat: -1,
-        });
-      }
-
-      // ✅ Interactive: glow follows cursor + tiny tilt
-      // (desktop only)
-      const mm = ScrollTrigger.matchMedia({
+      // ✅ Interactive glow follows cursor (desktop only)
+      ScrollTrigger.matchMedia({
         "(min-width: 1024px)": () => {
           if (!card || !glow) return;
 
@@ -118,17 +101,15 @@ export default function AiEnabledBanner() {
 
           const onMove = (e) => {
             const r = card.getBoundingClientRect();
-            const px = (e.clientX - r.left) / r.width;  // 0..1
-            const py = (e.clientY - r.top) / r.height; // 0..1
+            const px = (e.clientX - r.left) / r.width;
+            const py = (e.clientY - r.top) / r.height;
 
-            // tilt (small, premium)
             qx((px - 0.5) * 6);
             qy(-(py - 0.5) * 6);
 
-            // glow position (absolute in card)
             gx(`${px * 100}%`);
             gy(`${py * 100}%`);
-            go(0.95);
+            go(0.9);
           };
 
           const onLeave = () => {
@@ -147,7 +128,31 @@ export default function AiEnabledBanner() {
         },
       });
 
-      return () => mm && mm.kill && mm.kill();
+      // ✅ Button stroke gradient movement (real stroke)
+      // We animate the gradient rotation inside the SVG.
+      if (pillGrad && !prefersReduced) {
+        gsap.to(pillGrad, {
+          attr: { gradientTransform: "rotate(360)" },
+          duration: 2.8,
+          ease: "none",
+          repeat: -1,
+        });
+      }
+
+      // pill pop
+      if (pill) {
+        gsap.fromTo(
+          pill,
+          { opacity: 0, y: 10 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: { trigger: root, start: "top 80%" },
+          }
+        );
+      }
     }, root);
 
     return () => ctx.revert();
@@ -163,21 +168,19 @@ export default function AiEnabledBanner() {
                      flex items-center justify-center
                      [transform-style:preserve-3d]"
         >
-          {/* Base moving gradient (whole banner) */}
+          {/* ✅ Banner Gradient (no wipe) */}
           <div
             data-grad-layer
             className="absolute inset-0"
             style={{
               backgroundImage:
-                "radial-gradient(900px 450px at 30% 25%, rgba(45,120,255,0.55), transparent 55%), radial-gradient(850px 480px at 85% 70%, rgba(0, 10, 40, 0.95), transparent 60%), linear-gradient(135deg, #00051B 0%, #0A2B7A 45%, #00051B 100%)",
-              backgroundSize: "220% 220%",
-              backgroundPosition: "15% 50%",
+                "radial-gradient(900px 450px at 30% 25%, rgba(45,120,255,0.55), transparent 55%), radial-gradient(850px 480px at 85% 70%, rgba(0, 10, 40, 0.95), transparent 60%), linear-gradient(180deg, #00051B 0%, #0A2B7A 55%, #00051B 100%)",
               opacity: 0.98,
-              willChange: "filter, background-position",
+              willChange: "filter",
             }}
           />
 
-          {/* Interactive glow (follows cursor) */}
+          {/* Interactive glow */}
           <div
             data-glow
             className="pointer-events-none absolute h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -186,13 +189,13 @@ export default function AiEnabledBanner() {
               top: "50%",
               opacity: 0,
               background:
-                "radial-gradient(circle, rgba(122,169,239,0.45) 0%, rgba(122,169,239,0.10) 35%, transparent 70%)",
+                "radial-gradient(circle, rgba(122,169,239,0.48) 0%, rgba(122,169,239,0.12) 35%, transparent 70%)",
               filter: "blur(2px)",
               willChange: "left, top, opacity",
             }}
           />
 
-          {/* AI Image layer */}
+          {/* AI background image */}
           <div data-bgimg className="absolute inset-0 opacity-[0.22]">
             <Image
               src={AIImage}
@@ -203,7 +206,7 @@ export default function AiEnabledBanner() {
             />
           </div>
 
-          {/* subtle dot overlay */}
+          {/* dots overlay */}
           <div
             aria-hidden="true"
             className="absolute inset-0 opacity-[0.18]"
@@ -216,28 +219,46 @@ export default function AiEnabledBanner() {
 
           {/* Content */}
           <div className="relative z-10 text-center px-5 sm:px-10">
-            {/* Pill */}
-            <div className="inline-block relative">
-              {/* ✅ thin rotating stroke ring (only edge) */}
-              <div
-                data-ring
-                className="absolute -inset-[2px] rounded-full"
-                style={{
-                  // small bright segment in conic gradient
-                  background:
-                    "conic-gradient(from 0deg, rgba(255,255,255,0) 0deg, rgba(255,255,255,0) 300deg, rgba(255,255,255,0.95) 330deg, rgba(255,255,255,0) 360deg)",
-                  // mask to keep ONLY the border stroke (no full fill)
-                  padding: "2px",
-                  WebkitMask:
-                    "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
-                  WebkitMaskComposite: "xor",
-                  maskComposite: "exclude",
-                  opacity: 0.95,
-                  willChange: "transform",
-                }}
-              />
+            {/* ✅ Pill with REAL animated stroke */}
+            <div data-pill className="inline-flex items-center justify-center relative">
+              {/* SVG stroke sits behind pill */}
+              <svg
+                className="absolute inset-0 w-full h-full"
+                viewBox="0 0 420 64"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <defs>
+                  {/* animated gradient for stroke */}
+                  <linearGradient
+                    id="strokeGrad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                    data-pill-grad
+                  >
+                    <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+                    <stop offset="45%" stopColor="rgba(255,255,255,0.95)" />
+                    <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                  </linearGradient>
+                </defs>
 
-              {/* inner pill */}
+                <rect
+                  x="2"
+                  y="2"
+                  width="416"
+                  height="60"
+                  rx="30"
+                  ry="30"
+                  fill="none"
+                  stroke="url(#strokeGrad)"
+                  strokeWidth="2.2"
+                  opacity="0.95"
+                />
+              </svg>
+
+              {/* pill content */}
               <div className="relative rounded-full bg-[#1E5BFF]/95 text-white px-6 sm:px-7 py-3 sm:py-3.5">
                 <span className="font-extrabold">AI-Enabled</span>{" "}
                 <span className="font-light opacity-95">Fintech Platform</span>

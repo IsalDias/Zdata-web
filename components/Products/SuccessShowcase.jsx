@@ -14,190 +14,255 @@ import importZdata from "@/public/images/importZdata.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const DEFAULT_ITEMS = [
-    {
-        id: "lcb",
-        heroImage: success1,
-        heading: "Empowering Digital Transformation with",
-        highlight: "Finverus",
-        description:
-            "ZData Innovations Pvt Ltd, founded in 2023, is a dynamic software development and consultancy firm specializing in innovative and cost-effective technology solutions. Based in Malabe, Sri Lanka, we help businesses accelerate growth, enhance efficiency, and drive digital transformation.",
-        logos: [
-            { id: "lcb", src: company1, alt: "LCB Finance PLC" },
-            { id: "zdata", src: importZdata, alt: "ZData Innovations" },
-        ],
-    },
-    {
-        id: "case2",
-        heroImage: success2,
-        heading: "Built for Modern Financial Operations with",
-        highlight: "Finverus",
-        description:
-            "Finverus helps teams streamline workflows, improve visibility, and deliver faster, more reliable services through modern tooling and secure platform foundations.",
-        logos: [
-            { id: "mahindra", src: company2, alt: "Mahindra Ideal Finance" },
-            { id: "zdata2", src: importZdata, alt: "ZData Innovations" },
-        ],
-    },
+  {
+    id: "lcb",
+    heroImage: success1,
+    heading: "Empowering Digital Transformation with",
+    highlight: "Finverus",
+    description:
+      "ZData Innovations Pvt Ltd, founded in 2023, is a dynamic software development and consultancy firm specializing in innovative and cost-effective technology solutions. Based in Malabe, Sri Lanka, we help businesses accelerate growth, enhance efficiency, and drive digital transformation.",
+    logos: [
+      { id: "lcb", src: company1, alt: "LCB Finance PLC" },
+      { id: "zdata", src: importZdata, alt: "ZData Innovations" },
+    ],
+  },
+  {
+    id: "case2",
+    heroImage: success2,
+    heading: "Built for Modern Financial Operations with",
+    highlight: "Finverus",
+    description:
+      "Finverus helps teams streamline workflows, improve visibility, and deliver faster, more reliable services through modern tooling and secure platform foundations.",
+    logos: [
+      { id: "mahindra", src: company2, alt: "Mahindra Ideal Finance" },
+      { id: "zdata2", src: importZdata, alt: "ZData Innovations" },
+    ],
+  },
 ];
 
 export default function SuccessShowcase({ items, defaultId }) {
-    const data = useMemo(() => (items?.length ? items : DEFAULT_ITEMS), [items]);
+  const data = useMemo(() => (items?.length ? items : DEFAULT_ITEMS), [items]);
 
-    const initial = useMemo(() => {
-        if (defaultId) return defaultId;
-        return data[0]?.id ?? null;
-    }, [defaultId, data]);
+  const initial = useMemo(() => {
+    if (defaultId) return defaultId;
+    return data[0]?.id ?? null;
+  }, [defaultId, data]);
 
-    const [activeId, setActiveId] = useState(initial);
+  const [activeId, setActiveId] = useState(initial);
 
-    const sectionRef = useRef(null);
-    const swapRef = useRef(null);
+  const sectionRef = useRef(null);
+  const swapRef = useRef(null);
 
-    const active = useMemo(
-        () => data.find((x) => x.id === activeId) || data[0],
-        [data, activeId]
-    );
+  // NEW: image wrapper ref + animation guard
+  const imgWrapRef = useRef(null);
+  const isAnimatingRef = useRef(false);
 
-    useEffect(() => {
-        if (!sectionRef.current) return;
+  const active = useMemo(
+    () => data.find((x) => x.id === activeId) || data[0],
+    [data, activeId]
+  );
 
-        const ctx = gsap.context(() => {
-            gsap.set(".ss-anim", { opacity: 0, y: 18 });
-            gsap.set(".ss-img", { opacity: 0, y: 18, scale: 0.99 });
+  useEffect(() => {
+    if (!sectionRef.current) return;
 
-            gsap
-                .timeline({
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play reset play reset",
-                    },
-                })
-                .to(".ss-img", {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 0.8,
-                    ease: "power3.out",
-                })
-                .to(
-                    ".ss-anim",
-                    { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 },
-                    "-=0.45"
-                );
-        }, sectionRef);
+    const ctx = gsap.context(() => {
+      gsap.set(".ss-anim", { opacity: 0, y: 18 });
+      gsap.set(".ss-img", { opacity: 0, y: 18, scale: 0.99 });
 
-        return () => ctx.revert();
-    }, []);
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play reset play reset",
+          },
+        })
+        .to(".ss-img", {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power3.out",
+        })
+        .to(
+          ".ss-anim",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            stagger: 0.08,
+          },
+          "-=0.45"
+        );
+    }, sectionRef);
 
-    useEffect(() => {
-        if (!swapRef.current) return;
+    return () => ctx.revert();
+  }, []);
 
-        const tl = gsap.timeline();
-        tl.to(swapRef.current, { opacity: 0, y: 6, duration: 0.18, ease: "power2.out" })
-            .to(swapRef.current, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" });
+  // Text swap animation (right side)
+  useEffect(() => {
+    if (!swapRef.current) return;
 
-        return () => tl.kill();
-    }, [activeId]);
+    const tl = gsap.timeline();
+    tl.to(swapRef.current, {
+      opacity: 0,
+      y: 6,
+      duration: 0.18,
+      ease: "power2.out",
+    }).to(swapRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.28,
+      ease: "power2.out",
+    });
 
-    const goPrev = () => {
-        const idx = data.findIndex((x) => x.id === activeId);
-        const nextIdx = (idx - 1 + data.length) % data.length;
-        setActiveId(data[nextIdx].id);
-    };
+    return () => tl.kill();
+  }, [activeId]);
 
-    const goNext = () => {
-        const idx = data.findIndex((x) => x.id === activeId);
-        const nextIdx = (idx + 1) % data.length;
-        setActiveId(data[nextIdx].id);
-    };
+  // NEW: animate image transition then swap activeId
+  const animateTo = (nextId) => {
+    if (nextId === activeId) return;
 
-    return (
-        <section ref={sectionRef} className="w-full bg-white py-14 md:py-20">
-            <div className="mx-auto max-w-6xl px-6">
-                <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
-                    {/* LEFT: Image card */}
-                    <Parallax speed={-6}>
-                        <div className="ss-img relative overflow-hidden rounded-3xl bg-slate-50 shadow-[0_22px_70px_rgba(15,23,42,0.12)]">
-                            <Image
-                                src={active.heroImage}
-                                alt={`${active.id} success`}
-                                priority
-                                className="h-auto w-full object-cover"
-                            />
-                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/0 via-black/0 to-black/5" />
-                        </div>
-                    </Parallax>
+    // If ref not ready, just swap
+    if (!imgWrapRef.current) {
+      setActiveId(nextId);
+      return;
+    }
 
-                    {/* RIGHT: Text */}
-                    <Parallax speed={3}>
-                        <div ref={swapRef} className="min-w-0">
-                            <h3 className="ss-anim text-lg font-medium text-slate-700 md:text-xl">
-                                {active.heading}{" "}
-                                <span className="font-extrabold text-slate-900">{active.highlight}</span>
-                            </h3>
+    if (isAnimatingRef.current) return;
+    isAnimatingRef.current = true;
 
-                            <p className="ss-anim mt-5 text-sm leading-7 text-slate-600 md:text-[15px]">
-                                {active.description}
-                            </p>
+    gsap
+      .timeline({
+        defaults: { ease: "power2.out" },
+        onComplete: () => {
+          isAnimatingRef.current = false;
+        },
+      })
+      // OUT
+      .to(imgWrapRef.current, {
+        opacity: 0,
+        y: 10,
+        scale: 0.99,
+        duration: 0.22,
+      })
+      // SWAP (while hidden)
+      .add(() => setActiveId(nextId))
+      // IN
+      .to(imgWrapRef.current, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.35,
+      });
+  };
 
-                            {/* Logos */}
-                            <div className="ss-anim mt-6 inline-flex items-center gap- rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-[0_14px_40px_rgba(15,23,42,0.06)]">
-                                {active.logos?.map((logo) => (
-                                    <div
-                                        key={logo.id}
-                                        className="flex h-10 w-28 items-center justify-center"
-                                    >
-                                        <Image
-                                            src={logo.src}
-                                            alt={logo.alt}
-                                            className="max-h-8 w-auto object-contain"
-                                            draggable={false}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
+  const goPrev = () => {
+    const idx = data.findIndex((x) => x.id === activeId);
+    const nextIdx = (idx - 1 + data.length) % data.length;
+    animateTo(data[nextIdx].id);
+  };
 
-                            {/* Controls */}
-                            <div className="ss-anim mt-6 flex items-center justify-end gap-3">
-                                <button
-                                    type="button"
-                                    onClick={goPrev}
-                                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
-                                    aria-label="Previous"
-                                >
-                                    ←
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={goNext}
-                                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
-                                    aria-label="Next"
-                                >
-                                    →
-                                </button>
-                            </div>
-                        </div>
-                    </Parallax>
-                </div>
+  const goNext = () => {
+    const idx = data.findIndex((x) => x.id === activeId);
+    const nextIdx = (idx + 1) % data.length;
+    animateTo(data[nextIdx].id);
+  };
 
-                {/* Dots */}
-                <div className="mt-8 flex justify-center gap-2">
-                    {data.map((it) => (
-                        <button
-                            key={it.id}
-                            type="button"
-                            onClick={() => setActiveId(it.id)}
-                            className={[
-                                "h-2.5 w-2.5 rounded-full transition",
-                                it.id === activeId ? "bg-slate-900" : "bg-slate-300 hover:bg-slate-400",
-                            ].join(" ")}
-                            aria-label={`Show ${it.id}`}
-                        />
-                    ))}
-                </div>
+  return (
+    <section ref={sectionRef} className="w-full bg-white py-14 md:py-20">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
+          {/* LEFT: Image card */}
+          <Parallax speed={-6}>
+            <div
+              ref={imgWrapRef}
+              className="ss-img relative overflow-hidden rounded-3xl bg-slate-50 shadow-[0_22px_70px_rgba(15,23,42,0.12)]"
+            >
+              <Image
+                src={active.heroImage}
+                alt={`${active.id} success`}
+                priority
+                className="h-auto w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/0 via-black/0 to-black/5" />
             </div>
-        </section>
-    );
+          </Parallax>
+
+          {/* RIGHT: Text */}
+          <Parallax speed={3}>
+            <div ref={swapRef} className="min-w-0">
+              <h3 className="ss-anim text-lg font-medium text-slate-700 md:text-xl">
+                {active.heading}{" "}
+                <span className="font-extrabold text-slate-900">
+                  {active.highlight}
+                </span>
+              </h3>
+
+              <p className="ss-anim mt-5 text-sm leading-7 text-slate-600 md:text-[15px]">
+                {active.description}
+              </p>
+
+              {/* Logos */}
+              <div className="ss-anim mt-6 inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-[0_14px_40px_rgba(15,23,42,0.06)]">
+                {active.logos?.map((logo) => (
+                  <div
+                    key={logo.id}
+                    className="flex h-10 w-28 items-center justify-center"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="max-h-8 w-auto object-contain"
+                      draggable={false}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Controls */}
+              <div className="ss-anim mt-6 flex items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={goPrev}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
+                  aria-label="Previous"
+                >
+                  ←
+                </button>
+                <button
+                  type="button"
+                  onClick={goNext}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
+                  aria-label="Next"
+                >
+                  →
+                </button>
+              </div>
+            </div>
+          </Parallax>
+        </div>
+
+        {/* Dots */}
+        <div className="mt-8 flex justify-center gap-2">
+          {data.map((it) => (
+            <button
+              key={it.id}
+              type="button"
+              onClick={() => animateTo(it.id)}
+              className={[
+                "h-2.5 w-2.5 rounded-full transition",
+                it.id === activeId
+                  ? "bg-slate-900"
+                  : "bg-slate-300 hover:bg-slate-400",
+              ].join(" ")}
+              aria-label={`Show ${it.id}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

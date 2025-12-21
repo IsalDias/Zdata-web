@@ -12,6 +12,7 @@ import GetStartedBanner from "../components/GetStartedBanner";
 import ReadyToGetStarted from "../components/ReadyToGetStarted";
 import PeopleBehindBuild from "../components/PeopleBehindBuild";
 import Testimonials from "../components/Testimonials";
+import SuccessShowcase from "../components/Products/SuccessShowcase";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <FinverusIntro />
       <DividerIcon />
       <LatestFromFinverus />
+      <SuccessShowcase />
       <GetStartedBanner />
       <PeopleBehindBuild />
       <Testimonials />
