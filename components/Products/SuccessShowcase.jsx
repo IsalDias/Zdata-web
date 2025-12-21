@@ -7,8 +7,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import success1 from "@/public/images/success1.png";
 import success2 from "@/public/images/success2.png";
-import company1 from "@/public/images/company1.png";
-import company2 from "@/public/images/company2.png";
+import company1 from "@/public/images/company2.png";
+import company4 from "@/public/images/company4.png";
 import importZdata from "@/public/images/importZdata.png";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,21 +20,21 @@ const DEFAULT_ITEMS = [
     heading: "Empowering Digital Transformation with",
     highlight: "Finverus",
     description:
-      "ZData Innovations Pvt Ltd, founded in 2023, is a dynamic software development and consultancy firm specializing in innovative and cost-effective technology solutions. Based in Malabe, Sri Lanka, we help businesses accelerate growth, enhance efficiency, and drive digital transformation.",
+      "We’re proud to partner with LCB Finance, one of Sri Lanka’s most trusted and rapidly growing financial institutions.",
     logos: [
-      { id: "lcb", src: company1, alt: "LCB Finance PLC" },
+      { id: "lcb", src: company4, alt: "LCB Finance PLC" },
       { id: "zdata", src: importZdata, alt: "ZData Innovations" },
     ],
   },
   {
     id: "case2",
     heroImage: success2,
-    heading: "Built for Modern Financial Operations with",
+    heading: "Empowering Digital Transformation with ",
     highlight: "Finverus",
     description:
-      "Finverus helps teams streamline workflows, improve visibility, and deliver faster, more reliable services through modern tooling and secure platform foundations.",
+      "We’re proud to partner with Mahindra Ideal Finance, one of Sri Lanka’s most trusted and rapidly growing financial institutions.",
     logos: [
-      { id: "mahindra", src: company2, alt: "Mahindra Ideal Finance" },
+      { id: "mahindra", src: company1, alt: "Mahindra Ideal Finance" },
       { id: "zdata2", src: importZdata, alt: "ZData Innovations" },
     ],
   },

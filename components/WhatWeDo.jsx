@@ -6,8 +6,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import CodeIcon from "@mui/icons-material/Code";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import GroupsIcon from "@mui/icons-material/Groups";
+import SettingsSuggestIcon from "@mui/icons-material/Groups";
 import SecurityIcon from "@mui/icons-material/Security";
+import FactCheckIcon from "@mui/icons-material/FactCheck";
+import QueryStatsIcon from "@mui/icons-material/QueryStats";
+import DesignServicesIcon from "@mui/icons-material/DesignServices";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,48 +20,48 @@ const DEFAULT_ITEMS = [
     label: "Software Development",
     icon: CodeIcon,
     title: "Software Development",
-    p1: "At ZData Innovations, we bring vision, innovation, and expertise to life through our specialized software development services, tailored specifically for the fintech sector.",
-    p2: "Whether you require a robust fintech product, an innovative mobile application, or a custom software platform, our team is equipped to turn your ideas into reality.",
+    p1: "At ZData Innovations, we bring vision, innovation, and expertise to life through our specialized software development services, tailored specifically for the fintech sector. With deep industry knowledge and a passion for delivering excellence, we design and build cutting-edge software solutions that align with your business needs and exceed your expectations. Whether you require a robust fintech product, an innovative mobile application, or a custom software platform, our team is equipped to turn your ideas into reality. We focus on creating secure, scalable, and user-centric solutions that empower your business to thrive in the rapidly evolving financial landscape.",
+    p2: "Let us help you transform your vision into impactful software solutions that redefine what's possible in fintech.Whether you require a robust fintech product, an innovative mobile application, or a custom software platform, our team is equipped to turn your ideas into reality.",
   },
   {
     id: "it-consulting",
     label: "IT Consultancy Services",
     icon: SupportAgentIcon,
     title: "IT Consultancy Services",
-    p1: "We help you plan and execute technology strategy with clear roadmaps, architecture guidance, and risk-aware decision making.",
-    p2: "From audits to modernization, we align IT with business goals and drive measurable results.",
+    p1: "At ZData Innovations, we provide tailored IT consultancy services to empower businesses with innovative and scalable technology solutions. With years of expertise in the fintech sector, our consultancy services are designed to align technology with your business goalsWe help you plan and execute technology strategy with clear roadmaps, architecture guidance, and risk-aware decision making.",
+    p2: "Ensuring operational efficiency, enhanced security, and competitive advantage.",
   },
   {
     id: "team-augmentation",
-    label: "Team Augmentation",
-    icon: GroupsIcon,
-    title: "Team Augmentation",
-    p1: "Scale delivery fast with experienced engineers, designers, and QA specialists who integrate seamlessly with your team.",
-    p2: "Flexible engagement, predictable delivery, and strong ownership—without long hiring cycles.",
+    label: "Managed Services",
+    icon: SettingsSuggestIcon,
+    title: "Managed Services",
+    p1: "At ZData Innovations, we enable your business to grow and scale seamlessly while we take care of your IT systems. Operating as an extension of your in-house IT team, we adopt proven processes and cutting-edge technologies to suit your unique operational needs.Our subject matter experts bring deep expertise across a wide range of technologies, from IT operations to cloud computing. By outsourcing your IT services to us, you can focus entirely on your core business functions, confident that your IT infrastructure is in reliable hands. Whether it&#39;s database management, system administration, or cloud solutions, we ensure your operations are always optimized, secure, and aligned with industry best practices.",
+    p2: "Let us manage the complexities of IT, so you can drive innovation and achieve your business goals effortlessly.",
   },
   {
     id: "managed-services1",
-    label: "Managed Services 1",
-    icon: SecurityIcon,
-    title: "Managed Services",
-    p1: "Keep systems stable with monitoring, incident response, maintenance, and continuous improvements.",
+    label: "Software Quality Assurance and Testing Services",
+    icon: FactCheckIcon,
+    title: "Software Quality Assurance and Testing Services",
+    p1: "At ZData Innovations, we deliver comprehensive Software Quality Assurance (SQA) and testing services to ensure your applications meet the highest standards of functionality, security, and user experience.",
     p2: "We focus on reliability, security, and performance so your team can focus on product growth.",
   },
    {
     id: "managed-services2",
-    label: "Managed Services 2",
-    icon: SecurityIcon,
-    title: "Managed Services3",
-    p1: "Keep systems stable with monitoring, incident response, maintenance, and continuous improvements.",
-    p2: "We focus on reliability, security, and performance so your team can focus on product growth.",
+    label: "Data Analysis",
+    icon: QueryStatsIcon,
+    title: "Data Analysis",
+    p1: "At ZData Innovations, we specialize in delivering advanced Data Analysis Services tailored to the unique demands of the fintech industry and aligned with Central Bank of Sri Lanka (CBSL) compliance requirements.",
+    p2: "With our expertise, we help businesses unlock the full potential of their data, turning raw information into actionable insights that drive smarter decisions and strategic growth.",
   },
    {
     id: "managed-services",
-    label: "Managed Services 3",
-    icon: SecurityIcon,
-    title: "Managed Services",
-    p1: "Keep systems stable with monitoring, incident response, maintenance, and continuous improvements.",
-    p2: "We focus on reliability, security, and performance so your team can focus on product growth.",
+    label: "User Experience (UX) Design",
+    icon: DesignServicesIcon,
+    title: "User Experience (UX) Design",
+    p1: "At ZData Innovations, we craft intuitive and engaging user experiences that drive customer satisfaction and business success. With a deep understanding of industry standards and user- centered design principles.",
+    p2: "our UX design services focus on creating seamless interactions that elevate the functionality and appeal of your digital products.",
   },
 ];
 
@@ -124,7 +127,7 @@ export default function WhatWeDo({ items = DEFAULT_ITEMS }) {
 
   return (
     <section ref={sectionRef}
-    className="relative text-white overflow-hidden py-12 sm:py-16 md:py-24 lg:py-32" 
+    className="relative text-white overflow-hidden py-12 sm:py-16 md:py-24 lg:py-1" 
     style={{
       backgroundColor: "#031322",
       backgroundImage:
@@ -133,7 +136,7 @@ export default function WhatWeDo({ items = DEFAULT_ITEMS }) {
     
     >
 
-      <div className="relative mx-auto max-w-[90rem] px-4 sm:px-6 py-12 sm:py-16 md:py-24">
+      <div className="relative mx-auto max-w-[90rem] px-4 sm:px-6 py-12 sm:py-16 md:py-18">
         <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-14 md:grid-cols-12 md:items-stretch">
           {/* LEFT LIST */}
           <div className="wwd-fade md:col-span-5">
