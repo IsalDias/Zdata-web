@@ -55,18 +55,11 @@ export default function ReadyToGetStarted() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#f3f3f3] py-12 sm:py-16 md:py-20 lg:py-24">
+    <section ref={sectionRef} className="bg-[#f3f3f3] py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* top mini text + right line */}
-        <div className="relative mb-8 sm:mb-10 md:mb-14">
-          <div className="rgs-top flex items-start justify-end gap-2 sm:gap-4">
-            <p className="text-[9px] sm:text-xs text-slate-500 text-right leading-3 sm:leading-4">
-              From idea to execution,
-              <br />
-              ZData powers your digital growth.
-            </p>
-            <div className="h-px w-[28vw] sm:w-[32vw] max-w-[360px] bg-slate-300 mt-1" />
-          </div>
+        <div>
+          
         </div>
 
         {/* main center text */}

@@ -35,7 +35,7 @@ export default function WhoWeAre() {
             trigger: sectionRef.current,
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play reset play reset",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -57,11 +57,11 @@ export default function WhoWeAre() {
             <div className="absolute left-0 top-0 h-full w-[1px] bg-slate-300 hidden lg:block" />
 
             <div className="lg:pl-8">
-              <h2 className="text-lg sm:text-xl font-semibold tracking-wide text-slate-700">
-                WHO WE ARE ?
+              <h2 className="text-2xl sm:text-3xl font-light tracking-wide text-slate-800">
+                Who <span className="font-extrabold"> We Are ?</span>
               </h2>
 
-              <p className="mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600"> ZData Innovations Pvt Ltd, founded in 2023, is a dynamic software development and consultancy firm specializing in innovative and cost-effective technology solutions. Based in Malabe, Sri Lanka, we help businesses accelerate growth, enhance efficiency, and drive digital transformation. </p> <p className="mt-4 sm:mt-5 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600"> Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value. </p> <p className="mt-4 sm:mt-5 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600"> At ZData Innovations, we are committed to excellence, innovation, and collaboration. Our team of seasoned professionals blends technical expertise with creativity to build robust, future-ready solutions. </p>
+              <p className="mt-4 sm:mt-6 max-w-sd text-xs sm:text-sm leading-6 sm:leading-7 text-slate-600 text-justify "> ZData Innovations Pvt Ltd, founded in 2023, is a dynamic software development and consultancy firm specializing in innovative and cost-effective technology solutions. Based in Malabe, Sri Lanka, we help businesses accelerate growth, enhance efficiency, and drive digital transformation. </p> <p className="mt-4 sm:mt-6 max-w-sd text-xs sm:text-sm leading-6 sm:leading-7 text-slate-600 text-justify "> Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value. </p> <p className="mt-4 sm:mt-6 max-w-sd text-xs sm:text-sm leading-6 sm:leading-7 text-slate-600 text-justify "> At ZData Innovations, we are committed to excellence, innovation, and collaboration. Our team of seasoned professionals blends technical expertise with creativity to build robust, future-ready solutions. </p>
 
               <Link
                 href="/aboutus"

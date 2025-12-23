@@ -53,9 +53,12 @@ export default function SuccessShowcase({ items, defaultId }) {
   const sectionRef = useRef(null);
   const swapRef = useRef(null);
 
-  // NEW: image wrapper ref + animation guard
+  // image wrapper ref + animation guard
   const imgWrapRef = useRef(null);
   const isAnimatingRef = useRef(false);
+
+  // auto-play control
+  const userPausedRef = useRef(false);
 
   const active = useMemo(
     () => data.find((x) => x.id === activeId) || data[0],
@@ -121,11 +124,10 @@ export default function SuccessShowcase({ items, defaultId }) {
     return () => tl.kill();
   }, [activeId]);
 
-  // NEW: animate image transition then swap activeId
+  // animate image transition then swap activeId
   const animateTo = (nextId) => {
     if (nextId === activeId) return;
 
-    // If ref not ready, just swap
     if (!imgWrapRef.current) {
       setActiveId(nextId);
       return;
@@ -141,16 +143,13 @@ export default function SuccessShowcase({ items, defaultId }) {
           isAnimatingRef.current = false;
         },
       })
-      // OUT
       .to(imgWrapRef.current, {
         opacity: 0,
         y: 10,
         scale: 0.99,
         duration: 0.22,
       })
-      // SWAP (while hidden)
       .add(() => setActiveId(nextId))
-      // IN
       .to(imgWrapRef.current, {
         opacity: 1,
         y: 0,
@@ -171,6 +170,18 @@ export default function SuccessShowcase({ items, defaultId }) {
     animateTo(data[nextIdx].id);
   };
 
+  // ✅ AUTO MOVE every 3 seconds
+  useEffect(() => {
+    if (data.length <= 1) return;
+
+    const id = window.setInterval(() => {
+      if (!userPausedRef.current) goNext();
+    }, 3000);
+
+    return () => window.clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.length, activeId]);
+
   return (
     <section ref={sectionRef} className="w-full bg-white py-14 md:py-20">
       <div className="mx-auto max-w-6xl px-6">
@@ -180,6 +191,10 @@ export default function SuccessShowcase({ items, defaultId }) {
             <div
               ref={imgWrapRef}
               className="ss-img relative overflow-hidden rounded-3xl bg-slate-50 shadow-[0_22px_70px_rgba(15,23,42,0.12)]"
+              onMouseEnter={() => (userPausedRef.current = true)}
+              onMouseLeave={() => (userPausedRef.current = false)}
+              onTouchStart={() => (userPausedRef.current = true)}
+              onTouchEnd={() => (userPausedRef.current = false)}
             >
               <Image
                 src={active.heroImage}
@@ -193,7 +208,14 @@ export default function SuccessShowcase({ items, defaultId }) {
 
           {/* RIGHT: Text */}
           <Parallax speed={3}>
-            <div ref={swapRef} className="min-w-0">
+            <div
+              ref={swapRef}
+              className="min-w-0"
+              onMouseEnter={() => (userPausedRef.current = true)}
+              onMouseLeave={() => (userPausedRef.current = false)}
+              onTouchStart={() => (userPausedRef.current = true)}
+              onTouchEnd={() => (userPausedRef.current = false)}
+            >
               <h3 className="ss-anim text-lg font-medium text-slate-700 md:text-xl">
                 {active.heading}{" "}
                 <span className="font-extrabold text-slate-900">
@@ -205,19 +227,25 @@ export default function SuccessShowcase({ items, defaultId }) {
                 {active.description}
               </p>
 
-              {/* Logos */}
-              <div className="ss-anim mt-6 inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-[0_14px_40px_rgba(15,23,42,0.06)]">
-                {active.logos?.map((logo) => (
-                  <div
-                    key={logo.id}
-                    className="flex h-10 w-28 items-center justify-center"
-                  >
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="max-h-8 w-auto object-contain"
-                      draggable={false}
-                    />
+              {/* ✅ Logos aligned */}
+              <div className="ss-anim mt-6 inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-[0_14px_40px_rgba(15,23,42,0.06)]">
+                {active.logos?.map((logo, i) => (
+                  <div key={logo.id} className="flex items-center">
+                    <div className="flex h-12 w-32 items-center justify-center">
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={140}
+                        height={48}
+                        className="h-10 w-auto object-contain"
+                        draggable={false}
+                      />
+                    </div>
+
+                    {/* ✅ divider between logos */}
+                    {i !== active.logos.length - 1 && (
+                      <div className="mx-2 h-10 w-px bg-slate-200" />
+                    )}
                   </div>
                 ))}
               </div>
@@ -226,7 +254,14 @@ export default function SuccessShowcase({ items, defaultId }) {
               <div className="ss-anim mt-6 flex items-center justify-end gap-3">
                 <button
                   type="button"
-                  onClick={goPrev}
+                  onClick={() => {
+                    userPausedRef.current = true;
+                    goPrev();
+                    window.setTimeout(
+                      () => (userPausedRef.current = false),
+                      1200
+                    );
+                  }}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
                   aria-label="Previous"
                 >
@@ -234,7 +269,14 @@ export default function SuccessShowcase({ items, defaultId }) {
                 </button>
                 <button
                   type="button"
-                  onClick={goNext}
+                  onClick={() => {
+                    userPausedRef.current = true;
+                    goNext();
+                    window.setTimeout(
+                      () => (userPausedRef.current = false),
+                      1200
+                    );
+                  }}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
                   aria-label="Next"
                 >
@@ -251,7 +293,11 @@ export default function SuccessShowcase({ items, defaultId }) {
             <button
               key={it.id}
               type="button"
-              onClick={() => animateTo(it.id)}
+              onClick={() => {
+                userPausedRef.current = true;
+                animateTo(it.id);
+                window.setTimeout(() => (userPausedRef.current = false), 1200);
+              }}
               className={[
                 "h-2.5 w-2.5 rounded-full transition",
                 it.id === activeId

@@ -52,7 +52,7 @@ highlight1 = "FINTECH",
             trigger: sectionRef.current,
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play reset play reset",
+            toggleActions: "play none none none",
           },
         })
         .to(".fi-title", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" })
@@ -87,7 +87,7 @@ highlight1 = "FINTECH",
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
           {/* LEFT: text */}
-          <Parallax speed={-6}>
+          <Parallax speed={-3}>
             <div className="max-w-xl">
               <div className="fi-anim fi-title">
                 <p className="text-3xs font-semibold tracking-[0.20em] text-slate-500">
@@ -117,7 +117,7 @@ highlight1 = "FINTECH",
           </Parallax>
 
           {/* RIGHT: image card */}
-          <Parallax speed={4}>
+          <Parallax speed={2}>
             <div className="fi-anim fi-img mx-auto w-full max-w-[380px] md:max-w-[460px]">
               <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#0B3A9A] to-[#041B53] shadow-[0_22px_70px_rgba(2,6,23,0.25)]">
                 {/* subtle sheen */}

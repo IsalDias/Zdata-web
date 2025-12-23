@@ -4,13 +4,14 @@ import Image from "next/image";
 import LogoZ from "@/public/images/z-logo.png";
 
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function ServicesHero() {
   const sectionRef = useRef(null);
+  const [logoLoaded, setLogoLoaded] = useState(false);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -42,14 +43,14 @@ export default function ServicesHero() {
         {/* ===== Creative Background ===== */}
         <div className="absolute inset-0">
           {/* base gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#2250bb] via-[#0d2452] to-[#0a1638]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#3262d3] via-[#0d2452] to-[#0a1638] sh-grad" />
 
           {/* subtle grid */}
           <div
             className="absolute inset-0 opacity-[0.18]"
             style={{
               backgroundImage:
-                "linear-gradient(to right, rgba(255,255,255,0.14) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.14) 1px, transparent 1px)",
+                "linear-gradient(to right, rgba(255,255,255,0.14) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.5) 1px, transparent 1px)",
               backgroundSize: "34px 34px",
               maskImage: "radial-gradient(circle at 20% 30%, black 0%, transparent 70%)",
               WebkitMaskImage: "radial-gradient(circle at 20% 30%, black 0%, transparent 70%)",
@@ -63,11 +64,13 @@ export default function ServicesHero() {
 
           {/* shimmer overlay */}
           <div className="pointer-events-none absolute inset-0 opacity-30 sh-shimmer" />
+
+          {/* ✅ tuned moving gradient (slower + no corner wipes visible) */}
+          <div className="pointer-events-none absolute inset-0 sh-grad-move" />
         </div>
 
         {/* Glow blobs (parallax) */}
         <Parallax speed={-10}>
-          {/* ✅ FIXED: valid Tailwind sizes */}
           <div className="pointer-events-none absolute -left-40 top-1/2 h-[520px] w-[520px] -translate-y-1/2 rounded-full bg-blue-100/20 blur-[120px]" />
         </Parallax>
 
@@ -80,12 +83,23 @@ export default function ServicesHero() {
           <div className="grid w-full items-center gap-10 md:grid-cols-2">
             <Parallax speed={-12}>
               <div className="sh-anim sh-logo relative mx-auto w-full max-w-[520px]">
-                <div className="py-3" />
+                <div className="py-1 py-lg-10" />
+
+                {/* ✅ Skeleton loader */}
+                {!logoLoaded && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="sh-skeleton h-[320px] w-full rounded-xl md:h-[380px]" />
+                  </div>
+                )}
+
                 <Image
                   src={LogoZ}
                   alt="Z logo"
                   priority
-                  className="relative h-auto w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
+                  onLoad={() => setLogoLoaded(true)}
+                  className={`relative h-auto w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.45)] transition-opacity duration-300 ${
+                    logoLoaded ? "opacity-100" : "opacity-0"
+                  }`}
                 />
               </div>
             </Parallax>
@@ -96,11 +110,10 @@ export default function ServicesHero() {
                 <span className="font-extrabold text-white">Expertise</span>
               </h2>
 
-              <p className="sh-anim sh-text mt-7 max-w-xl text-sm leading-6 text-white/70 md:text-base md:leading-9">
-                Creative Software works with the entire product life cycle from MVP
-                to product support and maintenance. As one of the pioneers and
-                leaders in Sri Lanka&apos;s tech industry, we have a strong brand
-                name and attract the best local talent.
+              <p className="sh-anim sh-text mt-7 max-w-xl text-sm leading-6 text-white/70 md:text-base md:leading-9 text-justify">
+                Our experienced team of developers, designers, and project managers work together to deliver customised
+                software products that are tailored to meet the unique needs of each client. We have the expertise to
+                turn your vision into a reality.
               </p>
             </div>
           </div>
@@ -126,6 +139,58 @@ export default function ServicesHero() {
             transform: translateX(-40%);
             animation: shimmer 1.5s ease-in-out infinite;
             mix-blend-mode: overlay;
+          }
+
+          /* Base gradient (subtle motion, slower) */
+          .sh-grad {
+            background-size: 200% 200%;
+            animation: baseGradMove 12s ease-in-out infinite;
+          }
+
+          /* ✅ Moving gradient overlay:
+             - slower
+             - masked so edges/corners don't show the sweep "wipes"
+             - stays centered (no translate) */
+          .sh-grad-move {
+            background: linear-gradient(
+              110deg,
+              rgba(90, 160, 255, 0.16) 0%,
+              rgba(0, 0, 0, 0) 42%,
+              rgba(120, 90, 255, 0.14) 58%,
+              rgba(0, 0, 0, 0) 72%,
+              rgba(0, 220, 255, 0.12) 100%
+            );
+            background-size: 240% 240%;
+            animation: gradSweep 10.5s ease-in-out infinite;
+            mix-blend-mode: screen;
+            filter: blur(6px);
+            opacity: 0.75;
+
+            /* Hide corner/edge wipes */
+            mask-image: radial-gradient(circle at 50% 50%, black 0%, black 62%, transparent 82%);
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, black 0%, black 62%, transparent 82%);
+          }
+
+          /* Skeleton styles */
+          .sh-skeleton {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+          }
+          .sh-skeleton::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            transform: translateX(-55%);
+            background: linear-gradient(
+              120deg,
+              transparent 0%,
+              rgba(255, 255, 255, 0.22) 35%,
+              transparent 70%
+            );
+            animation: skeletonShimmer 1.1s ease-in-out infinite;
           }
 
           @keyframes blobA {
@@ -173,11 +238,51 @@ export default function ServicesHero() {
             }
           }
 
+          @keyframes baseGradMove {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+
+          /* ✅ Slower sweep, no translate (prevents corner wiping look) */
+          @keyframes gradSweep {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+
+          @keyframes skeletonShimmer {
+            0% {
+              transform: translateX(-55%);
+            }
+            50% {
+              transform: translateX(55%);
+            }
+            100% {
+              transform: translateX(-55%);
+            }
+          }
+
           @media (prefers-reduced-motion: reduce) {
             .sh-blob-a,
             .sh-blob-b,
             .sh-blob-c,
-            .sh-shimmer {
+            .sh-shimmer,
+            .sh-grad,
+            .sh-grad-move,
+            .sh-skeleton::after {
               animation: none !important;
             }
           }

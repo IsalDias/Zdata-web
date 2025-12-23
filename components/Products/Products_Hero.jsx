@@ -50,15 +50,18 @@ export default function ProductHero() {
       </div>
 
       {/* ✅ MOBILE IMAGE (keeps original height) */}
-      <div className="relative block w-full md:hidden ph-img opacity-0">
-        <Image
-          src={Backgroundproductmobile2}
-          alt="Product hero mobile background"
-          priority
-          className="w-full h-auto"
-        />
-        <div className="ph-overlay pointer-events-none absolute inset-0 bg-black/10 opacity-0" />
-      </div>
+      {/* ✅ MOBILE IMAGE (50% screen height) */}
+<div className="relative block w-full h-[50vh] md:hidden ph-img opacity-0">
+  <Image
+    src={Backgroundproudct} // same image as desktop
+    alt="Product hero mobile background"
+    priority
+    fill
+    className="object-cover"
+  />
+  <div className="ph-overlay pointer-events-none absolute inset-0 bg-black/10 opacity-0" />
+</div>
+
     </section>
   );
 }

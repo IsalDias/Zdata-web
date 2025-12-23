@@ -33,7 +33,7 @@ function LatestCard({ item }) {
     <div
       className="
         group relative overflow-hidden rounded-lg sm:rounded-2xl
-        h-[150px] w-[280px] sm:h-[200px] sm:w-[340px] md:h-[310px] md:w-[380px]
+        h-[250px] w-[280px] sm:h-[200px] sm:w-[340px] md:h-[310px] md:w-[380px]
         bg-slate-200 flex-shrink-0
       "
     >
@@ -92,15 +92,17 @@ export default function LatestFromFinverus({
   const data = items?.length ? items : DEFAULT_ITEMS;
 
   return (
-    <section className="bg-white py-10 sm:py-12 md:py-16 lg:py-20">
+    <section className="bg-white py-1 lg:py-17">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* Heading */}
-        <h2 className="text-center text-base sm:text-lg md:text-xl text-slate-700">
-          The Latest from <span className="font-extrabold text-slate-800">Finverus</span>
-        </h2>
+         <h2 className="text-2xl sm:text-3xl font-light tracking-wide text-slate-700 flex items-center justify-center">
+  Latest From&nbsp;
+  <span className="font-extrabold">Finverus</span>
+</h2>
+
 
         {/* Desktop row */}
-        <div className="mt-6 sm:mt-8 md:mt-10 hidden md:flex items-center justify-center gap-6 md:gap-8 lg:gap-10">
+        <div className="mt-6 sm:mt-8 md:mt-10 hidden md:flex items-center justify-center gap-6 md:gap-8 lg:gap-10 py-5">
           {data.map((item) => (
             <LatestCard key={item.id} item={item} />
           ))}
@@ -108,7 +110,7 @@ export default function LatestFromFinverus({
 
         {/* Mobile swipe */}
         <div className="mt-6 sm:mt-8 md:hidden -mx-4 px-4 overflow-x-auto scrollbar-hide">
-          <div className="flex gap-4 w-max pb-2">
+          <div className="flex gap-4 w-max pb-4">
             {data.map((item) => (
               <LatestCard key={item.id} item={item} />
             ))}

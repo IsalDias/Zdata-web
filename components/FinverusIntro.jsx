@@ -21,7 +21,7 @@ export default function FinverusIntro() {
           trigger: sectionRef.current,
           start: "top 80%",
           end: "bottom 20%",
-          toggleActions: "play reset play reset",
+          toggleActions: "play none play none",
         },
       });
 
@@ -48,7 +48,7 @@ export default function FinverusIntro() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white py-10 sm:py-14 md:py-16 lg:py-20">
+    <section ref={sectionRef} className="bg-white py-8 sm:py-14 md:py-16 lg:py-20">
       <div className="mx-auto max-w-[90rem] px-4 sm:px-6">
         <div className="relative overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2.25rem]">
           {/* background */}
@@ -88,22 +88,14 @@ export default function FinverusIntro() {
 
             {/* RIGHT */}
             <div className="finv-right md:col-span-7 flex flex-col justify-center">
-              <p className="text-white/85 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 max-w-3xl">
-                At ZData Innovations, we are committed to excellence, innovation,
-                and collaboration. Our team of seasoned professionals blends
-                technical expertise with creativity to build robust, future-ready
-                solutions. As technology reshapes industries, we stay ahead of
-                the curve, empowering businesses with cutting-edge tools to thrive
-                in the digital era.
+              <p className="text-white/85 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 max-w-3xl text-justify">
+                Finverus is a unified fintech and core banking ecosystem designed to power modern financial institutions. It brings together critical banking and lending capabilities into a single, scalable platform enabling faster innovation, 
+                stronger compliance, and seamless customer experiences.
               </p>
 
               <p className="mt-4 sm:mt-6 text-white/85 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 max-w-3xl">
-                At ZData Innovations, we are committed to excellence, innovation,
-                and collaboration. Our team of seasoned professionals blends
-                technical expertise with creativity to build robust, future-ready
-                solutions. As technology reshapes industries, we stay ahead of
-                the curve, empowering businesses with cutting-edge tools to thrive
-                in the digital era.
+                From digital customer onboarding and AML customer screening to Loan Origination Systems (LOS) and core banking integrations, Finverus supports the complete financial services lifecycle. Built with security, regulatory compliance, and flexibility at its core, Finverus helps banks and financial
+                institutions adapt confidently to an evolving digital landscape.
               </p>
 
               <div className="finv-btn mt-8 sm:mt-10 flex justify-center md:justify-start">

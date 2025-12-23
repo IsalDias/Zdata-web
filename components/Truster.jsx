@@ -5,33 +5,33 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Parallax } from "react-scroll-parallax";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import company1 from "../public/images/company1.png";
 import company2 from "../public/images/company2.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function TrustedCompanies({ items = [] }) {
-  // ✅ Use PUBLIC path strings (no imports from /public)
+export default function Truster({ items = [] }) {
   const data = useMemo(
     () =>
       items.length
         ? items
         : [
-          {
-            name: "SEYLAN",
-            logo: company1,
-            title: "TRUSTED BY LEADING COMPANIES",
-            p1: "Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value.",
-            p2: "At ZData Innovations, we are committed to excellence, innovation, and collaboration. Our team of seasoned professionals blends technical expertise with creativity to build robust.",
-          },
-          {
-            name: "PEOPLE’S LEASING",
-            logo: company2,
-            title: "TRUSTED BY LEADING COMPANIES",
-            p1: "Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value.",
-            p2: "More details here. Replace with your real content.",
-          },
-        ],
+            {
+              name: "SEYLAN",
+              logo: company1,
+              title: "Trusted by ",
+              p1: "For People’s Leasing (PLC), ZData Innovations provides reliable and secure Database Management Solutions designed to support high-performance financial operations.",
+              p2: "Our solutions focus on database optimization, monitoring, security, and data integrity - ensuring smooth system performance, high availability, and compliance with industry best practices. By strengthening PLC’s data infrastructure, we help improve operational stability, scalability, and informed decision-making.",
+            },
+            {
+              name: "PEOPLE’S LEASING",
+              logo: company2,
+              title: "Trusted by ",
+              p1: "For Mahindra Ideal Finance, ZData Innovations delivers a robust Customer Onboarding Module and a comprehensive Loan Origination System (LOS) designed to meet regulatory and operational excellence.",
+              p2: "Our solution streamlines the end-to-end loan lifecycle from customer onboarding and KYC validation to credit assessment and loan approval while ensuring full compliance with Central Bank of Sri Lanka (CBSL) guidelines.",
+            },
+          ],
     [items]
   );
 
@@ -41,47 +41,19 @@ export default function TrustedCompanies({ items = [] }) {
   const sectionRef = useRef(null);
   const cardRef = useRef(null);
   const nextBtnRef = useRef(null);
-  const prevBtnRef = useRef(null);
 
-  // ✅ Scroll-in animation (replays when entering again)
+  // Disable parallax on mobile to prevent overlap
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".tc-in",
-        { opacity: 0, y: 18 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power3.out",
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play reset play reset",
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
-  // ✅ When slide changes: animate logo + text in
-  useEffect(() => {
-    if (!cardRef.current) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".tc-swap",
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", stagger: 0.06 }
-      );
-    }, cardRef);
-
-    return () => ctx.revert();
-  }, [index]);
+  // ✅ Auto-advance (pause while user is interacting)
+  const userPausedRef = useRef(false);
 
   const animateButtonTap = (btnRef) => {
     if (!btnRef.current) return;
@@ -97,27 +69,78 @@ export default function TrustedCompanies({ items = [] }) {
     setIndex((i) => (i + 1) % data.length);
   };
 
-  const prev = () => {
-    animateButtonTap(prevBtnRef);
-    setIndex((i) => (i - 1 + data.length) % data.length);
-  };
+  // Auto slide change every 6s (only if more than 1 item)
+  useEffect(() => {
+    if (data.length <= 1) return;
+
+    const id = window.setInterval(() => {
+      if (!userPausedRef.current) next();
+    }, 2000);
+
+    return () => window.clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.length]);
+
+  // Scroll-in animation
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".tc-in",
+        { opacity: 0, y: 18 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.2,
+          ease: "power3.out",
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none play none",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Slide change animation
+  useEffect(() => {
+    if (!cardRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".tc-swap",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", stagger: 0.06 }
+      );
+    }, cardRef);
+
+    return () => ctx.revert();
+  }, [index]);
 
   return (
     <section ref={sectionRef} className="bg-white py-12 sm:py-16 md:py-24">
-      <div className="mx-auto max-w-[100rem] px-4 sm:px-6">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6">
         <div
           ref={cardRef}
           className="
-    tc-in relative rounded-2xl sm:rounded-3xl bg-[#f7f7f7]
-    px-6 sm:px-8 py-10 sm:py-14 md:px-14 md:py-16
-    min-h-auto sm:min-h-[520px] md:min-h-[420px]
-  "
+            tc-in relative rounded-2xl sm:rounded-3xl bg-[#f7f7f7]
+            px-5 sm:px-8 py-8 sm:py-14 md:px-14 md:py-16
+          "
+          // ✅ pause auto-advance while user hovers / touches
+          onMouseEnter={() => (userPausedRef.current = true)}
+          onMouseLeave={() => (userPausedRef.current = false)}
+          onTouchStart={() => (userPausedRef.current = true)}
+          onTouchEnd={() => (userPausedRef.current = false)}
         >
-          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:gap-10 md:grid-cols-12 md:items-center">
-            {/* LEFT: Logo (parallax) */}
+          <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-10 md:grid-cols-12 md:items-center">
+            {/* LEFT: Logo */}
             <div className="md:col-span-5 flex items-center justify-center">
-              <Parallax speed={-8}>
-                <div className="tc-swap relative h-24 w-[260px] sm:h-28 sm:w-[320px] md:h-24 md:w-[520px]">
+              <Parallax speed={isMobile ? 0 : -8}>
+                <div className="tc-swap relative h-20 w-[240px] sm:h-28 sm:w-[320px] md:h-24 md:w-[520px]">
                   <Image
                     src={current.logo}
                     alt={`${current.name} logo`}
@@ -134,21 +157,22 @@ export default function TrustedCompanies({ items = [] }) {
               <div className="tc-swap h-56 w-px bg-slate-300" />
             </div>
 
-            {/* RIGHT: Text (parallax opposite) */}
+            {/* RIGHT: Text */}
             <div className="md:col-span-6">
-              <Parallax speed={6}>
-                <h3 className="tc-swap text-lg sm:text-2xl md:text-3xl font-light text-slate-700 tracking-wide">
-                  {current.title.split("LEADING COMPANIES")[0]}
+              <Parallax speed={isMobile ? 0 : 6}>
+                <h3 className="tc-swap text-xl sm:text-3xl font-light tracking-wide text-slate-800">
+                  {current.title}
                   <span className="font-extrabold text-slate-700">
-                    LEADING COMPANIES
+                    Leading Companies
                   </span>
                 </h3>
 
-                <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600">
+                {/* ✅ Justified text */}
+                <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600 text-justify">
                   {current.p1}
                 </p>
 
-                <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600">
+                <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600 text-justify">
                   {current.p2}
                 </p>
               </Parallax>
@@ -157,36 +181,29 @@ export default function TrustedCompanies({ items = [] }) {
 
           {/* Controls */}
           {data.length > 1 && (
-            <>
-              <button
-                ref={prevBtnRef}
-                onClick={prev}
-                aria-label="Previous company"
-                className="absolute left-4 sm:left-6 bottom-4 sm:bottom-6 rounded-full border border-slate-300 bg-white/70 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-base text-slate-700 hover:bg-white transition"
-              >
-                ←
-              </button>
-
-              <button
-                ref={nextBtnRef}
-                onClick={next}
-                aria-label="Next company"
-                className="absolute right-4 sm:right-6 bottom-4 sm:bottom-6 rounded-full border border-slate-300 bg-white/70 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-base text-slate-700 hover:bg-white transition"
-              >
-                →
-              </button>
-
-              {/* Dots */}
-              <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
-                {data.map((_, i) => (
-                  <span
-                    key={i}
-                    className={`h-2 w-2 rounded-full ${i === index ? "bg-slate-700" : "bg-slate-300"
-                      }`}
-                  />
-                ))}
-              </div>
-            </>
+            <button
+              ref={nextBtnRef}
+              onClick={() => {
+                userPausedRef.current = true; // pause briefly on manual click
+                next();
+                window.setTimeout(() => (userPausedRef.current = false), 1500);
+              }}
+              aria-label="Next company"
+              className="
+                absolute right-4 sm:right-6 bottom-4 sm:bottom-6
+                grid place-items-center
+                rounded-full border border-slate-300 bg-white/70 hover:bg-white transition
+                text-slate-700
+              "
+              // ✅ FORCE perfect circle (fixes oval on mobile)
+              style={{
+                width: isMobile ? 44 : 52,
+                height: isMobile ? 44 : 52,
+                lineHeight: 1,
+              }}
+            >
+              →
+            </button>
           )}
         </div>
       </div>

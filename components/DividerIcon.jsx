@@ -24,7 +24,7 @@ export default function DividerIcon() {
                     trigger: wrapRef.current,
                     start: "top 85%",
                     end: "bottom 20%",
-                    toggleActions: "play none play none", // replay when scroll up/down again
+                    toggleActions: "play reset play", // replay when scroll up/down again
                 },
             });
 
@@ -49,7 +49,7 @@ export default function DividerIcon() {
     }, []);
 
     return (
-        <section ref={wrapRef} className="bg-white py-10 md:py-1">
+        <section ref={wrapRef} className="bg-white  md:py-1">
             <div className="mx-auto max-w-5.5xl px-4">
                <div className="flex items-center justify-center gap-4">
   {/* left line */}
@@ -61,15 +61,21 @@ export default function DividerIcon() {
   />
 
   {/* icon */}
-  <div className="div-icon relative h-24 w-24 rounded-md flex items-center justify-center">
-    <Image
-      src={finverusIcon}
-      alt="Icon"
-      width={75}
-      height={75}
-      className="object-contain"
-    />
-  </div>
+  <div className="div-icon relative flex items-center justify-center
+                h-28 w-28
+                sm:h-24 sm:w-24
+                md:h-24 md:w-24
+                rounded-md">
+  <Image
+    src={finverusIcon}
+    alt="Icon"
+    className="object-contain
+               w-16 h-16
+               sm:w-14 sm:h-14
+               md:w-14 md:h-14"
+  />
+</div>
+
 
   {/* right line */}
   <div

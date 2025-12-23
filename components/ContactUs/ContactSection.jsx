@@ -26,7 +26,7 @@ export default function ContactSection() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 1.0,
           ease: "power3.out",
           stagger: 0.12,
           scrollTrigger: { trigger: section, start: "top 80%" },
@@ -47,7 +47,7 @@ export default function ContactSection() {
         });
       }
 
-      // parallax: move gradient panel slightly (subtle)
+      // parallax + color: desktop gradient panel
       if (gradPanel) {
         gsap.to(gradPanel, {
           y: -24,
@@ -60,13 +60,12 @@ export default function ContactSection() {
           },
         });
 
-        // ✅ Smooth color transition (no wipe)
         gsap.fromTo(
           gradPanel,
           { filter: "hue-rotate(0deg) saturate(1) brightness(1)" },
           {
-            filter: "hue-rotate(18deg) saturate(1.15) brightness(7.02)",
-            duration: 2.6,
+            filter: "hue-rotate(18deg) saturate(1.15) brightness(5.02)",
+            duration: 5.6,
             ease: "sine.inOut",
             repeat: -1,
             yoyo: true,
@@ -74,8 +73,19 @@ export default function ContactSection() {
         );
       }
 
-      // ✅ Mobile gradient also smoothly transitions
+      // ✅ Mobile gradient BEHIND content: parallax + smooth color transition
       if (gradMobile) {
+        gsap.to(gradMobile, {
+          y: -24,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+
         gsap.fromTo(
           gradMobile,
           { filter: "hue-rotate(0deg) saturate(1) brightness(1)" },
@@ -109,11 +119,23 @@ export default function ContactSection() {
         className="absolute inset-y-0 right-0 w-[52%] hidden lg:block"
         style={{
           backgroundImage: "linear-gradient(180deg, #121317 0%, #7AA9EF 100%)",
-          opacity: 0.95,
+          opacity: 0.9,
           willChange: "transform, filter",
         }}
       />
 
+      {/* ✅ MOBILE gradient background BEHIND the form/content (not a small bottom strip) */}
+      <div
+        data-grad-mobile
+        className="absolute inset-0 lg:hidden"
+        style={{
+          backgroundImage: "linear-gradient(180deg, #121317 0%, #7AA9EF 100%)",
+          opacity: 0.75,
+          willChange: "transform, filter",
+        }}
+      />
+
+      {/* Content */}
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-10 sm:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* LEFT CONTENT */}
@@ -129,13 +151,13 @@ export default function ContactSection() {
             </h3>
 
             <p className="mt-8 text-white/80 text-sm sm:text-base leading-relaxed max-w-md">
-              Contact us for a consultation on your requirement & to see how we
-              provide you with a tailor-made solution.
+              Contact us for a consultation on your requirement &amp; to see how
+              we provide you with a tailor-made solution.
             </p>
           </div>
 
           {/* FORM CARD */}
-          <div className="flex lg:justify-end">
+          <div className="flex lg:justify-end relative z-10">
             <div
               data-card
               className="w-full lg:w-[560px] rounded-[28px] bg-white
@@ -146,7 +168,7 @@ export default function ContactSection() {
                 Send Us a Message
               </h3>
               <p className="mt-2 text-sm text-black/45">
-                Fill in the form & we will get back to you!
+                Fill in the form &amp; we will get back to you!
               </p>
 
               <form
@@ -172,19 +194,6 @@ export default function ContactSection() {
               </form>
             </div>
           </div>
-        </div>
-
-        {/* MOBILE gradient strip (animated too) */}
-        <div className="lg:hidden mt-10 -mx-4 sm:-mx-6">
-          <div
-            data-grad-mobile
-            className="h-28 w-full"
-            style={{
-              backgroundImage: "linear-gradient(180deg, #121317 0%, #7AA9EF 100%)",
-              opacity: 0.95,
-              willChange: "filter",
-            }}
-          />
         </div>
       </div>
     </section>
