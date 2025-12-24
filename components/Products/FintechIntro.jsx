@@ -64,7 +64,7 @@ highlight1 = "FINTECH",
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full overflow-hidden bg-white py-14 md:py-20">
+    <section ref={sectionRef} className="relative w-full overflow-hidden bg-white py-14 md:py-32">
       {/* ✅ Grid background with center white fade */}
       <div className="pointer-events-none absolute inset-0">
         {/* base white */}
@@ -98,7 +98,7 @@ highlight1 = "FINTECH",
                   <span className="block">{title} </span>
                   <span className="block">
                     <span className="font-extrabold text-sky-600">{highlight}</span>{" "}
-                    <span className="font-light">{titleTail}</span>
+                    <span className="font-light text-justify">{titleTail}</span>
                   </span>
                 </h2>
               </div>

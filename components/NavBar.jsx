@@ -103,7 +103,7 @@ export default function NavBar() {
           <div
             className={[
               "flex items-center justify-between rounded-2xl px-6 py-3",
-              "bg-black/28 backdrop-blur-md border border-white/10",
+              "bg-black/45 backdrop-blur-md border border-white/10",
               "shadow-xl shadow-black/10",
             ].join(" ")}
           >

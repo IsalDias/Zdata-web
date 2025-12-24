@@ -16,8 +16,9 @@ import Footer from '@/components/Footer'
 function page() {
   return (
     <div>
-      <Products_Hero />
+      {/* <Products_Hero /> */}
       <FintechIntro />
+            <ProductModules />  
       <FinverusFeatures />
       <>
       <div className="my-2 md:my-1 lg:my-15" />
@@ -27,7 +28,7 @@ function page() {
       <StatementBar />
       <SuccessShowcase />
       <GetStartedBanner />
-      <ProductModules />  
+
       <AiEnabledBanner />
       <PartnersMarquee />
       <ReadyToGetStarted />
