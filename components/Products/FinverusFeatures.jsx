@@ -140,7 +140,7 @@ export default function FinverusFeatures({ items }) {
               return (
                 <div
                   key={item.id}
-                  className="ff-card group rounded-2xl border border-white/15 bg-white/5 p-5] backdrop-blur-md transition hover:border-white/25 hover:bg-white/7 md:p-6"
+                  className="ff-card group rounded-2xl  border border-white/15 bg-white/5 p-5] backdrop-blur-md transition hover:border-white/25 hover:bg-white/7 md:p-6"
                 >
                   <div className="flex items-start gap-4 md:gap-5">
                     {/* Icon tile */}

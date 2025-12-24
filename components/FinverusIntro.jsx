@@ -100,7 +100,7 @@ export default function FinverusIntro() {
 
               <div className="finv-btn mt-8 sm:mt-10 flex justify-center md:justify-start">
                 <Link
-                  href="/request-demo"
+                  href="https://calendly.com/zdatai"
                   className="inline-flex items-center gap-3 sm:gap-4 rounded-full bg-[#0ea5ff] px-5 sm:px-7 py-2 sm:py-3 text-xs sm:text-sm text-white font-medium hover:bg-[#0b94e6] transition"
                 >
                   Schedule a call

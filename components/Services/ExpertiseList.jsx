@@ -151,7 +151,7 @@ export default function ExpertiseList({
                           {/* caret */}
                           <span
                             className={[
-                              "ml-2 inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition",
+                              "ml-2 inline-flex h-8 w-8 items-center justify-center  text-slate-500 transition",
                               isOpen ? "rotate-180" : "rotate-0",
                             ].join(" ")}
                             aria-hidden

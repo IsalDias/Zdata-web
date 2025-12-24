@@ -82,7 +82,8 @@ export default function WhatWeDo({ items = DEFAULT_ITEMS }) {
   const active = data.find((x) => x.id === activeId) || data[0];
 
   // ✅ mobile: expand/collapse description under each item
-  const [openMobileId, setOpenMobileId] = useState(data[0]?.id);
+const [openMobileId, setOpenMobileId] = useState(null);
+
 
   const sectionRef = useRef(null);
   const rightRef = useRef(null);

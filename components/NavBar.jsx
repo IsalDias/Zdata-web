@@ -146,7 +146,7 @@ export default function NavBar() {
             {/* ACTIONS */}
             <div className="flex items-center gap-3">
               <Link
-                href="/request-demo"
+                href="/https://calendly.com/zdatai" 
                 prefetch
                 className="hidden md:inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm text-white transition-colors duration-200 hover:bg-blue-700"
               >
@@ -214,7 +214,7 @@ export default function NavBar() {
 
                 <li className="pt-2">
                   <Link
-                    href="/request-demo"
+                    href="https://calendly.com/zdatai"
                     prefetch
                     onClick={() => setOpen(false)}
                     className="block rounded-lg bg-blue-500 px-4 py-2 text-center text-white transition-colors duration-200 hover:bg-blue-700"

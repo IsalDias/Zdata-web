@@ -74,7 +74,7 @@ export default function Grid1() {
     <section className="relative bg-white py-12 sm:py-16 md:py-20 lg:py-24">
       {/* background grid */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        className="pointer-events-none absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage:
             "linear-gradient(to right, rgba(15,23,42,.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,1) 1px, transparent 1px)",

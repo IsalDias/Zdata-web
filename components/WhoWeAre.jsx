@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { Parallax } from "react-scroll-parallax";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import team from "../public/images/team.png";
+import team from "../public/images/team1.png";
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -2,6 +2,7 @@
 import HeroConnect from '@/components/ContactUs/HeroConnect'
 import ContactSection from '@/components/ContactUs/ContactSection'
 import ContactMapSection from '@/components/ContactUs/ContactMapSection'
+import Footer from '@/components/Footer'
 
 
 
@@ -12,6 +13,7 @@ function page() {
       <HeroConnect />
       <ContactMapSection />
       <ContactSection />
+      <Footer />
 
 
     </div>

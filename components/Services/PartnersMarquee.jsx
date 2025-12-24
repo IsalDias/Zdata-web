@@ -122,7 +122,7 @@ export default function PartnersMarquee({
   return (
     // ✅ Fix mobile spacing: keep vertical padding small on mobile
     <section className="w-full bg-white py-4 md:py-6">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-0">
         <h2 className="text-center text-lg md:text-sm lg:text-2xl">
           <span className="font-normal">Our </span>
           <span className="font-bold">Valued Partners</span>

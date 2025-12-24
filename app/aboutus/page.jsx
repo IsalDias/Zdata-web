@@ -8,6 +8,7 @@ import FutureTogetherStrip from '@/components/AboutUs/FutureTogetherStrip'
 import AgileHoverColumns from '@/components/AboutUs/AgileHoverColumns'
 import DigitalInnovationCTA from '@/components/DigitalInnovationCTA'
 import ReadyToGetStarted from '@/components/ReadyToGetStarted'
+import Footer from '@/components/Footer'
 
 
 
@@ -23,6 +24,7 @@ function page() {
       {/* <DigitalInnovationCTA /> */}
       {/* <AgileHoverColumns /> */}
       <ReadyToGetStarted />
+      <Footer />
 
 
     </div>

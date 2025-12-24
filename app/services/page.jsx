@@ -5,6 +5,7 @@ import OurApproach from '../../components/Services/OurApproach'
 import ReadyToGetStarted from '@/components/ReadyToGetStarted'
 import ExpertiseList from '@/components/Services/ExpertiseList'
 import PartnersMarquee from '@/components/Services/PartnersMarquee'
+import Footer from '@/components/Footer'
 
 function page() {
   return (
@@ -17,6 +18,7 @@ function page() {
             <PartnersMarquee/>
 
       <ReadyToGetStarted />
+      <Footer />
 
 
     </div>

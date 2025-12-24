@@ -6,29 +6,35 @@ import { Parallax } from "react-scroll-parallax";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import t1 from "../public/images/t1.png";
+import t2 from "../public/images/t2.png";
+import company1 from "@/public/images/company1.png";
+import company2 from "@/public/images/company7.png";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 const DEFAULT_ITEMS = [
   {
-    id: "lcb",
+    id: "lcb1",
     image: t1,
+    companyimage: company1,
     headingLight: "WHAT THEY",
     headingBold: "SAY ABOUT US",
-    p1: "Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value.",
-    p2: "At ZData Innovations, we are committed to excellence, innovation, and collaboration. Our team of seasoned professionals blends technical expertise with creativity to build robust, future-ready solutions. As technology reshapes industries, we stay ahead of the curve, empowering businesses with cutting-edge tools to thrive in the digital era.",
-    name: "Mr. Shiran Maduwantha",
-    designation: "CEO - LCB",
+    p1: "ZData Innovations has been a trusted partner in managing and optimizing the core banking database and application platform at People’s Leasing & Finance PLC.",
+    p2: "Their expertise in handling our database, application servers, and underlying operating systems as part of their managed IT services has been instrumental in ensuring the stability, performance, and scalability of our mission-critical systems.",
+    name: "Prabath Gunasena",
+    designation: "Senior Deputy General Manager – ICT\nPeople’s Leasing & Finance PLC (PLC)",
   },
   {
-    id: "lcb",
-    image: t1,
+    id: "lcb2",
+    image: t2,
+    companyimage: company2,
     headingLight: "WHAT THEY",
     headingBold: "SAY ABOUT US",
-    p1: "Our expertise spans custom software development, managed IT services, consultancy, and team augmentation, tailored to meet the evolving needs of diverse industries. We take a client-centric approach, delivering scalable solutions that align with strategic goals and create long-term value.",
-    p2: "At ZData Innovations, we are committed to excellence, innovation, and collaboration. Our team of seasoned professionals blends technical expertise with creativity to build robust, future-ready solutions. As technology reshapes industries, we stay ahead of the curve, empowering businesses with cutting-edge tools to thrive in the digital era.",
-    name: "Mr. Shiran Maduwantha",
-    designation: "CEO - LCB",
+    p1: "ZData Innovations, led by Nuwan and his team, exemplifies a structured, analytical, and driven approach. Their problem-solving and people skills make them highly capable.",
+    p2: "Nuwan quickly builds strong relationships with clients and stakeholders, creating a collaborative and productive working environment. Anyone partnering with ZData Innovations will be delighted and grateful for their expertise and dedication.",
+    name: "Niels Rask",
+    designation: "Co-Founder & CTO – Muntra AB\n",
   },
 ];
 
@@ -59,7 +65,7 @@ export default function Testimonials({ items = DEFAULT_ITEMS }) {
             trigger: sectionRef.current,
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play reset play reset",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -84,12 +90,12 @@ export default function Testimonials({ items = DEFAULT_ITEMS }) {
   }, [index]);
 
   return (
-    <section ref={sectionRef} className="bg-white py-12 sm:py-16 md:py-24">
+    <section ref={sectionRef} className="bg-white py-3 md:py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="relative grid grid-cols-1 gap-6 sm:gap-8 md:gap-10 md:grid-cols-12 md:items-start">
           {/* LEFT IMAGE (Parallax) */}
           <div className="ts-enter md:col-span-4">
-            <Parallax speed={-6}>
+            <Parallax speed={-3}>
               <div className="relative overflow-hidden rounded-2xl bg-slate-200">
                 <div className="relative h-[300px] sm:h-[360px] md:h-[520px]">
                   <Image
@@ -106,7 +112,7 @@ export default function Testimonials({ items = DEFAULT_ITEMS }) {
 
           {/* RIGHT CONTENT */}
           <div ref={contentRef} className="ts-enter md:col-span-8 md:pl-10">
-            <h3 className="ts-swap text-lg sm:text-xl md:text-2xl font-light tracking-wide text-slate-600">
+            <h3 className="ts-swap text-lg sm:text-xl md:text-2xl font-light tracking-wide text-slate-600 py-2">
               {current.headingLight}{" "}
               <span className="font-extrabold text-slate-700">
                 {current.headingBold}
@@ -125,11 +131,14 @@ export default function Testimonials({ items = DEFAULT_ITEMS }) {
               <p className="text-xs sm:text-sm font-semibold text-slate-800">
                 {current.name}
               </p>
-              <p className="mt-1 text-xs text-slate-500">{current.designation}</p>
+              <p className="mt-1 text-xs text-slate-500 py-1">{current.designation}</p>
+              <Image className="w-35 h-atuo" src={current.companyimage} alt="Company Logo" />
+            </div>
+            <div >
 
               {data.length > 1 && (
-                <div className="ts-enter col-span-full flex justify-start gap-3 mt-8 sm:mt-10 py-12 sm:py-16 md:py-20">
-                  <button
+                <div className="ts-enter col-span-full flex justify-start gap-3 mt-8 sm:mt-10 ">
+                  {/* <button
                     onClick={prev}
                     aria-label="Previous testimonial"
                     className="
@@ -139,7 +148,7 @@ export default function Testimonials({ items = DEFAULT_ITEMS }) {
       "
                   >
                     ←
-                  </button>
+                  </button> */}
 
                   <button
                     onClick={next}

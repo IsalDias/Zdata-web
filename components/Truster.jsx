@@ -69,13 +69,13 @@ export default function Truster({ items = [] }) {
     setIndex((i) => (i + 1) % data.length);
   };
 
-  // Auto slide change every 6s (only if more than 1 item)
+  // Auto slide change every 4s (only if more than 1 item)
   useEffect(() => {
     if (data.length <= 1) return;
 
     const id = window.setInterval(() => {
       if (!userPausedRef.current) next();
-    }, 2000);
+    }, 4000);
 
     return () => window.clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,7 +90,7 @@ export default function Truster({ items = [] }) {
         {
           opacity: 1,
           y: 0,
-          duration: 0.2,
+          duration: 0.4,
           ease: "power3.out",
           stagger: 0.08,
           scrollTrigger: {
@@ -129,6 +129,9 @@ export default function Truster({ items = [] }) {
           className="
             tc-in relative rounded-2xl sm:rounded-3xl bg-[#f7f7f7]
             px-5 sm:px-8 py-8 sm:py-14 md:px-14 md:py-16
+
+            /* ✅ FIXED/CONSISTENT HEIGHT ON MOBILE */
+            min-h-[520px] sm:min-h-0
           "
           // ✅ pause auto-advance while user hovers / touches
           onMouseEnter={() => (userPausedRef.current = true)}
@@ -160,21 +163,23 @@ export default function Truster({ items = [] }) {
             {/* RIGHT: Text */}
             <div className="md:col-span-6">
               <Parallax speed={isMobile ? 0 : 6}>
-                <h3 className="tc-swap text-xl sm:text-3xl font-light tracking-wide text-slate-800">
-                  {current.title}
-                  <span className="font-extrabold text-slate-700">
-                    Leading Companies
-                  </span>
-                </h3>
+                {/* ✅ fixed area on mobile so content changes don't change card height */}
+                <div className="max-h-[260px] overflow-auto pr-1 sm:max-h-none sm:overflow-visible">
+                  <h3 className="tc-swap text-xl sm:text-3xl font-light tracking-wide text-slate-800">
+                    {current.title}
+                    <span className="font-extrabold text-slate-700">
+                      Leading Companies
+                    </span>
+                  </h3>
 
-                {/* ✅ Justified text */}
-                <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600 text-justify">
-                  {current.p1}
-                </p>
+                  <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600 text-justify">
+                    {current.p1}
+                  </p>
 
-                <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600 text-justify">
-                  {current.p2}
-                </p>
+                  <p className="tc-swap mt-4 sm:mt-6 text-xs sm:text-sm md:text-[15px] leading-6 sm:leading-7 text-slate-600 text-justify">
+                    {current.p2}
+                  </p>
+                </div>
               </Parallax>
             </div>
           </div>
@@ -190,9 +195,8 @@ export default function Truster({ items = [] }) {
               }}
               aria-label="Next company"
               className="
-                absolute right-4 sm:right-6 bottom-4 sm:bottom-6
+                absolute right-4 sm:right-6 bottom-1 sm:bottom-1
                 grid place-items-center
-                rounded-full border border-slate-300 bg-white/70 hover:bg-white transition
                 text-slate-700
               "
               // ✅ FORCE perfect circle (fixes oval on mobile)

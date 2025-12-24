@@ -78,7 +78,7 @@ export default function SuccessShowcase({ items, defaultId }) {
             trigger: sectionRef.current,
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play reset play reset",
+            toggleActions: "play none play none",
           },
         })
         .to(".ss-img", {
@@ -176,14 +176,14 @@ export default function SuccessShowcase({ items, defaultId }) {
 
     const id = window.setInterval(() => {
       if (!userPausedRef.current) goNext();
-    }, 3000);
+    }, 5000);
 
     return () => window.clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.length, activeId]);
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-14 md:py-20">
+    <section ref={sectionRef} className="w-full bg-white py-4 md:py-20 h-150">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
           {/* LEFT: Image card */}
@@ -252,7 +252,7 @@ export default function SuccessShowcase({ items, defaultId }) {
 
               {/* Controls */}
               <div className="ss-anim mt-6 flex items-center justify-end gap-3">
-                <button
+                {/* <button
                   type="button"
                   onClick={() => {
                     userPausedRef.current = true;
@@ -262,11 +262,11 @@ export default function SuccessShowcase({ items, defaultId }) {
                       1200
                     );
                   }}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
+                  className="inline-flex h-10 w-10 items-center justify-center  bg-white text-slate-600 transition"
                   aria-label="Previous"
                 >
                   ←
-                </button>
+                </button> */}
                 <button
                   type="button"
                   onClick={() => {
@@ -277,7 +277,7 @@ export default function SuccessShowcase({ items, defaultId }) {
                       1200
                     );
                   }}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
+                  className="inline-flex h-10 w-10 items-center justify-center  bg-white text-slate-600 transition"
                   aria-label="Next"
                 >
                   →
@@ -288,7 +288,7 @@ export default function SuccessShowcase({ items, defaultId }) {
         </div>
 
         {/* Dots */}
-        <div className="mt-8 flex justify-center gap-2">
+        {/* <div className="mt-8 flex justify-center gap-2">
           {data.map((it) => (
             <button
               key={it.id}
@@ -307,7 +307,7 @@ export default function SuccessShowcase({ items, defaultId }) {
               aria-label={`Show ${it.id}`}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

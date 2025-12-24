@@ -99,7 +99,7 @@ function ProductModules({ title = "Product Modules", modules = [] }) {
 
   return (
     <section ref={rootRef} className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-10 sm:py-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-19 sm:py-14">
         {/* Section Heading */}
         <div className="mb-8">
           <h2 data-section-title className="text-2xl sm:text-3xl font-semibold">

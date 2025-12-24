@@ -11,7 +11,7 @@ import ProductModules from '@/components/Products/ProductModules.jsx'
 import AiEnabledBanner from '@/components/Products/AiEnabledBanner.jsx'
 import PartnersMarquee from '@/components/Services/PartnersMarquee.jsx'
 import ReadyToGetStarted from '@/components/ReadyToGetStarted'
-
+import Footer from '@/components/Footer'
 
 function page() {
   return (
@@ -26,10 +26,12 @@ function page() {
       <LatestFromFinverus />
       <StatementBar />
       <SuccessShowcase />
+      <GetStartedBanner />
       <ProductModules />  
       <AiEnabledBanner />
       <PartnersMarquee />
       <ReadyToGetStarted />
+      <Footer />
 
     </div>
   )

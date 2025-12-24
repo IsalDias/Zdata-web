@@ -13,6 +13,7 @@ import ReadyToGetStarted from "../components/ReadyToGetStarted";
 import PeopleBehindBuild from "../components/PeopleBehindBuild";
 import Testimonials from "../components/Testimonials";
 import SuccessShowcase from "../components/Products/SuccessShowcase";
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       <PeopleBehindBuild />
       <Testimonials />
       <ReadyToGetStarted />
+      <Footer />
 
     </>
   );

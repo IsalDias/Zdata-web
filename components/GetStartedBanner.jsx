@@ -12,9 +12,9 @@ export default function GetStartedBanner() {
   const [email, setEmail] = useState("");
 
   return (
-    <section className="bg-white py-8 sm:py-10 md:py-12 lg:py-14 relative overflow-hidden">
+    <section className="bg-white py-8 md:py-12 lg:py-14 relative overflow-hidden">
       <div className="mx-auto max-w-[90rem] px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2rem] px-4 sm:px-8 py-8 sm:py-10 md:px-14 lg:px-20 md:py-14">
+        <div className="relative overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2rem] px-4 sm:px-0 py-8 sm:py-1 md:px-14 lg:px-20 md:py-14">
           <div className="absolute inset-0 animated-gradient" />
           <div className="absolute inset-0 bg-[#061427]/15" />
 
@@ -59,9 +59,10 @@ export default function GetStartedBanner() {
             </div>
 
             {/* RIGHT: 3 floating cards (responsive) */}
-            <div className="md:col-span-6 relative min-h-[260px] sm:min-h-[300px] md:min-h-[380px]">
+           <div className="md:col-span-6 relative min-h-[260px] sm:min-h-[300px] md:min-h-[380px]">
+
               {/* Card 1 (top right) */}
-              <div className="absolute right-100 top-0 z-1 w-[40px] sm:w-[100px] md:w-[260px]">
+              <div className="absolute sm:right-30 md:right-90 top-0 z-1 w-[140px] sm:w-[100px] md:w-[260px]">
                 <Image
                   src={samplecard1} // LOS
                   alt="Loan Origination System"
@@ -71,7 +72,7 @@ export default function GetStartedBanner() {
               </div>
 
               {/* Card 2 (middle left) */}
-              <div className="absolute right-2 sm:right-28 md:right-80 sm:top-28 md:top-62 z-20 w-[200px] sm:w-[240px] md:w-[280px]">
+              <div className="absolute right-28  md:right-80 top-35 md:top-62 md:z-10 w-[200px] z-90 sm:w-[240px] md:w-[280px]">
                 <Image
                   src={samplecard2} // Sync
                   alt="Core Banking Sync"
@@ -80,7 +81,8 @@ export default function GetStartedBanner() {
               </div>
 
               {/* Card 3 (bottom right) */}
-              <div className="absolute right-0 sm:right-4 md:right-20 bottom-20 z-30 w-[180px] sm:w-[220px] md:w-[260px]">
+              <div className="absolute -right-2 sm:right-40 md:right-20 bottom-20 md:bottom-20 z-30 w-[180px] sm:w-[220px] md:w-[260px]">
+
                 <Image
                   src={samplecard3} // Screening
                   alt="Customer Screening"

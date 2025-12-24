@@ -54,10 +54,25 @@ export default function AiEnabledBanner() {
             scrub: true,
           },
         });
+
+        // ✅ NEW: slow scale up/down (breathing effect)
+        if (!prefersReduced) {
+          gsap.fromTo(
+            imgLayer,
+            { scale: 1 },
+            {
+              scale: 1.1,          // 🔧 adjust (1.03 - 1.10)
+              duration: 2.5,        // 🔧 slower/faster
+              ease: "sine.inOut",
+              repeat: -1,
+              yoyo: true,
+              transformOrigin: "50% 50%",
+            }
+          );
+        }
       }
 
-      // ✅ NO WIPE: Remove background-position animation entirely.
-      // Instead, do a smooth color shift only.
+      // Gradient smooth color shift (no wipe)
       if (gradLayer && !prefersReduced) {
         gsap.fromTo(
           gradLayer,
@@ -72,7 +87,7 @@ export default function AiEnabledBanner() {
         );
       }
 
-      // ✅ Interactive glow follows cursor (desktop only)
+      // Interactive glow follows cursor (desktop only)
       ScrollTrigger.matchMedia({
         "(min-width: 1024px)": () => {
           if (!card || !glow) return;
@@ -128,8 +143,7 @@ export default function AiEnabledBanner() {
         },
       });
 
-      // ✅ Button stroke gradient movement (real stroke)
-      // We animate the gradient rotation inside the SVG.
+      // Button stroke gradient movement
       if (pillGrad && !prefersReduced) {
         gsap.to(pillGrad, {
           attr: { gradientTransform: "rotate(360)" },
@@ -160,15 +174,15 @@ export default function AiEnabledBanner() {
 
   return (
     <section ref={rootRef} className="w-full bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-5 lg:py-10">
         <div
           data-card
           className="relative overflow-hidden rounded-[28px]
-                     min-h-[220px] sm:min-h-[260px] lg:min-h-[280px]
-                     flex items-center justify-center
-                     [transform-style:preserve-3d]"
+             min-h-[320px] sm:min-h-[260px] lg:min-h-[280px]
+             flex items-center justify-center
+             [transform-style:preserve-3d]"
         >
-          {/* ✅ Banner Gradient (no wipe) */}
+          {/* Banner Gradient */}
           <div
             data-grad-layer
             className="absolute inset-0"
@@ -196,7 +210,7 @@ export default function AiEnabledBanner() {
           />
 
           {/* AI background image */}
-          <div data-bgimg className="absolute inset-0 opacity-[0.22]">
+          <div data-bgimg className="absolute inset-0 opacity-[0.22] will-change-transform">
             <Image
               src={AIImage}
               alt="AI background"
@@ -219,9 +233,7 @@ export default function AiEnabledBanner() {
 
           {/* Content */}
           <div className="relative z-10 text-center px-5 sm:px-10">
-            {/* ✅ Pill with REAL animated stroke */}
             <div data-pill className="inline-flex items-center justify-center relative">
-              {/* SVG stroke sits behind pill */}
               <svg
                 className="absolute inset-0 w-full h-full"
                 viewBox="0 0 420 64"
@@ -229,13 +241,12 @@ export default function AiEnabledBanner() {
                 aria-hidden="true"
               >
                 <defs>
-                  {/* animated gradient for stroke */}
                   <linearGradient
                     id="strokeGrad"
-                    x1="0%"
+                    x1="100%"
                     y1="0%"
-                    x2="100%"
-                    y2="0%"
+                    x2="0%"
+                    y2="100%"
                     data-pill-grad
                   >
                     <stop offset="0%" stopColor="rgba(255,255,255,0)" />
@@ -258,16 +269,16 @@ export default function AiEnabledBanner() {
                 />
               </svg>
 
-              {/* pill content */}
               <div className="relative rounded-full bg-[#1E5BFF]/95 text-white px-6 sm:px-7 py-3 sm:py-3.5">
-                <span className="font-extrabold">AI-Enabled</span>{" "}
+                <span className="font-extrabold lg:text-2xl">AI-Enabled</span>{"        "}
                 <span className="font-light opacity-95">Fintech Platform</span>
               </div>
             </div>
 
             <p className="mt-6 text-white/85 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-              FinVerus integrates artificial intelligence to enhance operational efficiency,
-              improve credit accuracy, and strengthen compliance across every financial workflow.
+              FinVerus integrates artificial intelligence to enhance operational
+              efficiency, improve credit accuracy, and strengthen compliance across
+              every financial workflow.
             </p>
           </div>
         </div>
